@@ -1,9 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>new new</title>
+    <title>newnew</title>
     <url>/2024/03/11/new-new/</url>
-    <content><![CDATA[<h1 id="ooii"><a href="#ooii" class="headerlink" title="ooii"></a>ooii</h1><p>bbbcc</p>
+    <content><![CDATA[<h1 id="尝试出一道密码题"><a href="#尝试出一道密码题" class="headerlink" title="尝试出一道密码题"></a>尝试出一道密码题</h1><h3 id="1-将py文件打包成可执行文件"><a href="#1-将py文件打包成可执行文件" class="headerlink" title="1.将py文件打包成可执行文件"></a>1.将py文件打包成可执行文件</h3><p>参考 ：</p>
+<p><a href="https://blog.csdn.net/weixin_43804047/article/details/119704965">https://blog.csdn.net/weixin_43804047/article/details/119704965</a></p>
+<p>在安装pyinstaller的时候一直报错</p>
+<p>需要用到虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m venv --help</span><br><span class="line"></span><br><span class="line">python3 -m venv myenv</span><br><span class="line"></span><br><span class="line">source myenv/bin/activate</span><br><span class="line"></span><br><span class="line">pip install pyinstaller  </span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313201832173.png" alt="image-20240313201832173"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pyinstaller -F chuti.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313201358740.png" alt="image-20240313201358740"></p>
+<h3 id="2-pwn-deploy-chroot-git"><a href="#2-pwn-deploy-chroot-git" class="headerlink" title="2.pwn_deploy_chroot.git"></a>2.pwn_deploy_chroot.git</h3><p>一开始一直在用pwn_deploy_chroot.git。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/giantbranch/pwn_deploy_chroot.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313202119311.png" alt="image-20240313202119311"></p>
+<p>将二进制程序放到.&#x2F;bin 目录（注意文件名不要含有特殊字符，因为后面会这个文件名创建用户名）<img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313203613452.png" alt="image-20240313203613452"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python2 initialize.py  //注意是python2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up --build -d 	# 请用root用户启动</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313203737550.png" alt="image-20240313203737550">等了挺久的</p>
+<h3 id="3-ctf-xinetd"><a href="#3-ctf-xinetd" class="headerlink" title="3.ctf_xinetd"></a>3.ctf_xinetd</h3><p>朋友说那个比较low</p>
+<p>在等的时候用这个</p>
+<p>参考</p>
+<p><a href="https://blog.csdn.net/Myon5/article/details/131763593">https://blog.csdn.net/Myon5/article/details/131763593</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/Eadom/ctf_xinetd</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313204727590.png" alt="image-20240313204727590"></p>
+<p>先把可执行文件放到bin目录下，然后进行提权 750就够了</p>
+<p>然后ls 看到chuti这个可执行文件变成绿的，说明已经具有可执行权限<img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313204829548.png" alt="image-20240313204829548"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ctf.xinetd</span><br></pre></td></tr></table></figure>
+
+<p>端口改成80，文件修改一下<img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313205119014.png" alt="image-20240313205119014"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
+
+<p>将expose改为80并保存退出<img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313205207361.png" alt="image-20240313205207361"></p>
+<p>创建容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t &quot;chuti&quot; .</span><br></pre></td></tr></table></figure>
+
+<p><img src="C:\Users\wy199\AppData\Roaming\Typora\typora-user-images\image-20240313205518380.png" alt="image-20240313205518380"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>a</title>
+    <url>/2024/03/13/a/</url>
+    <content><![CDATA[<h1 id="尝试出一道密码题"><a href="#尝试出一道密码题" class="headerlink" title="尝试出一道密码题"></a>尝试出一道密码题</h1><h3 id="1-将py文件打包成可执行文件"><a href="#1-将py文件打包成可执行文件" class="headerlink" title="1.将py文件打包成可执行文件"></a>1.将py文件打包成可执行文件</h3><p>参考 ：</p>
+<p><a href="https://blog.csdn.net/weixin_43804047/article/details/119704965">https://blog.csdn.net/weixin_43804047/article/details/119704965</a></p>
+<p>在安装pyinstaller的时候一直报错</p>
+<p>需要用到虚拟环境</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python3 -m venv --help</span><br><span class="line"></span><br><span class="line">python3 -m venv myenv</span><br><span class="line"></span><br><span class="line">source myenv/bin/activate</span><br><span class="line"></span><br><span class="line">pip install pyinstaller  </span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313201832173.png" alt="image-20240313201832173"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pyinstaller -F chuti.py</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313201358740.png" alt="image-20240313201358740"></p>
+<h3 id="2-pwn-deploy-chroot-git"><a href="#2-pwn-deploy-chroot-git" class="headerlink" title="2.pwn_deploy_chroot.git"></a>2.pwn_deploy_chroot.git</h3><p>一开始一直在用pwn_deploy_chroot.git。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/giantbranch/pwn_deploy_chroot.git</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313202119311.png" alt="image-20240313202119311"></p>
+<p>将二进制程序放到.&#x2F;bin 目录（注意文件名不要含有特殊字符，因为后面会这个文件名创建用户名）<img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313203613452.png" alt="image-20240313203613452"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python2 initialize.py  //注意是python2</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up --build -d 	# 请用root用户启动</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313203737550.png" alt="image-20240313203737550">等了挺久的</p>
+<h3 id="3-ctf-xinetd"><a href="#3-ctf-xinetd" class="headerlink" title="3.ctf_xinetd"></a>3.ctf_xinetd</h3><p>朋友说那个比较low</p>
+<p>在等的时候用这个</p>
+<p>参考</p>
+<p><a href="https://blog.csdn.net/Myon5/article/details/131763593">https://blog.csdn.net/Myon5/article/details/131763593</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/Eadom/ctf_xinetd</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313204727590.png" alt="image-20240313204727590"></p>
+<p>先把可执行文件放到bin目录下，然后进行提权 750就够了</p>
+<p>然后ls 看到chuti这个可执行文件变成绿的，说明已经具有可执行权限<img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313204829548.png" alt="image-20240313204829548"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim ctf.xinetd</span><br></pre></td></tr></table></figure>
+
+<p>端口改成80，文件修改一下<img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313205119014.png" alt="image-20240313205119014"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
+
+<p>将expose改为80并保存退出<img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313205207361.png" alt="image-20240313205207361"></p>
+<p>创建容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker build -t &quot;chuti&quot; .</span><br></pre></td></tr></table></figure>
+
+<p><img src="/.io//Users\wy199\myblog\source_posts\a\image-20240313205518380.png" alt="image-20240313205518380"></p>
 ]]></content>
   </entry>
 </search>
