@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>解决hexo无法显示本地图片问题</title>
+    <url>/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>太好笑了真是</p>
+<p>刚写完博客然后发现图片显示不了</p>
+<p>就都是下面这样的<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314160211852.png" class title="image-20240314160211852"></p>
+<p>好好好确实可以记录一下 毕竟翻了很多资料人家都说找了很久 然后给的解决方案也没有一个能成的</p>
+<p>后来慢慢摸索出来的 可以记录一下</p>
+<h2 id="1-配置站点文件"><a href="#1-配置站点文件" class="headerlink" title="1.配置站点文件"></a>1.配置站点文件</h2><p>将<code>_config.yml</code> 文件中的<code>post_asset_folder</code> 选项设为 <code>true</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Typora中进行图像设置"><a href="#2-Typora中进行图像设置" class="headerlink" title="2.Typora中进行图像设置"></a>2.Typora中进行图像设置</h2><p>文件–偏好设置–图像</p>
+<p>设置如下：</p>
+<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314161053110.png" class title="image-20240314161053110">
+
+<p>这样设置的目的就是使得我引用的图片路径是相对路径</p>
+<p>就像这里的图片路径是 （解决hexo无法显示本地图片问题&#x2F;image-20240314161053110.png）</p>
+<p>只有这样的路径才能显示	</p>
+<h2 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3.安装插件"></a>3.安装插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p>安装插件：</p>
+<p>虽然在source&#x2F;_posts文件夹下写了md文件，也有了图片资源文件夹存了图片，但从我们前面typora中的设置不难知道，实际上md文件中的图片路径都是相对路径（.&#x2F;${filename}）。而实际网上看到是html文件，从md到html的转变就是hexo帮我们做的，hexo g命令就是干这个的。转换后的html文件在public目录下，路径是通过日期指示的。</p>
+<p>效果：</p>
+<p>就是可以生成同名的文件夹用来装图片<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314162510260.png" class title="image-20240314162510260"></p>
+<h2 id="4-修改html"><a href="#4-修改html" class="headerlink" title="4.修改html"></a>4.修改html</h2><p>先进行渲染</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>然后可以在C:\Users\wy199\myblog\public\2024\03\14\b路径下找到html文件</p>
+<p>打开搜索图片的路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;&lt;img src=&quot;/./b/image-20240314153630768.png&quot; alt=&quot;image-20240314153630768&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>要修改成下面这样，路径重复了<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314163455657.png" class title="image-20240314163455657"></p>
+<p>后来读了一下C:\Users\wy199\myblog\node_modules\hexo-asset-image\readme.md</p>
+<p>Just use <code>![logo](logo.jpg)</code> to insert <code>logo.jpg</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># hexo-asset-image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Give asset image in hexo a absolutely path automatically</span><br><span class="line"></span><br><span class="line"># Usege</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"># Example</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">MacGesture2-Publish.md</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">Make sure `post_asset_folder: true` in your `_config.yml`.</span><br><span class="line"></span><br><span class="line">Just use `![logo](logo.jpg)` to insert `logo.jpg`.</span><br><span class="line"></span><br><span class="line"># History</span><br><span class="line"></span><br><span class="line">2018-04-18: support hexo-abbrlink</span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>a</title>
     <url>/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/</url>
     <content><![CDATA[<h1 id="尝试出一道密码题"><a href="#尝试出一道密码题" class="headerlink" title="尝试出一道密码题"></a>尝试出一道密码题</h1><h3 id="1-将py文件打包成可执行文件"><a href="#1-将py文件打包成可执行文件" class="headerlink" title="1.将py文件打包成可执行文件"></a>1.将py文件打包成可执行文件</h3><p>参考 ：</p>
@@ -53,47 +94,6 @@
 <img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240313205518380.png" class title="image-20240313205518380">
 
 <img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240313201358740.png" class>
-]]></content>
-  </entry>
-  <entry>
-    <title>解决hexo无法显示本地图片问题</title>
-    <url>/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>太好笑了真是</p>
-<p>刚写完博客然后发现图片显示不了</p>
-<p>就都是下面这样的<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314160211852.png" class title="image-20240314160211852"></p>
-<p>好好好确实可以记录一下 毕竟翻了很多资料人家都说找了很久 然后给的解决方案也没有一个能成的</p>
-<p>后来慢慢摸索出来的 可以记录一下</p>
-<h2 id="1-配置站点文件"><a href="#1-配置站点文件" class="headerlink" title="1.配置站点文件"></a>1.配置站点文件</h2><p>将<code>_config.yml</code> 文件中的<code>post_asset_folder</code> 选项设为 <code>true</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-Typora中进行图像设置"><a href="#2-Typora中进行图像设置" class="headerlink" title="2.Typora中进行图像设置"></a>2.Typora中进行图像设置</h2><p>文件–偏好设置–图像</p>
-<p>设置如下：</p>
-<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314161053110.png" class title="image-20240314161053110">
-
-<p>这样设置的目的就是使得我引用的图片路径是相对路径</p>
-<p>就像这里的图片路径是 （解决hexo无法显示本地图片问题&#x2F;image-20240314161053110.png）</p>
-<p>只有这样的路径才能显示	</p>
-<h2 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3.安装插件"></a>3.安装插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p>安装插件：</p>
-<p>虽然在source&#x2F;_posts文件夹下写了md文件，也有了图片资源文件夹存了图片，但从我们前面typora中的设置不难知道，实际上md文件中的图片路径都是相对路径（.&#x2F;${filename}）。而实际网上看到是html文件，从md到html的转变就是hexo帮我们做的，hexo g命令就是干这个的。转换后的html文件在public目录下，路径是通过日期指示的。</p>
-<p>效果：</p>
-<p>就是可以生成同名的文件夹用来装图片<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314162510260.png" class title="image-20240314162510260"></p>
-<h2 id="4-修改html"><a href="#4-修改html" class="headerlink" title="4.修改html"></a>4.修改html</h2><p>先进行渲染</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>然后可以在C:\Users\wy199\myblog\public\2024\03\14\b路径下找到html文件</p>
-<p>打开搜索图片的路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;&lt;img src=&quot;/./b/image-20240314153630768.png&quot; alt=&quot;image-20240314153630768&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<p>要修改成下面这样，路径重复了<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314163455657.png" class title="image-20240314163455657"></p>
-<p>后来读了一下C:\Users\wy199\myblog\node_modules\hexo-asset-image\readme.md</p>
-<p>Just use <code>![logo](logo.jpg)</code> to insert <code>logo.jpg</code>.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># hexo-asset-image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Give asset image in hexo a absolutely path automatically</span><br><span class="line"></span><br><span class="line"># Usege</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"># Example</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">MacGesture2-Publish.md</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">Make sure `post_asset_folder: true` in your `_config.yml`.</span><br><span class="line"></span><br><span class="line">Just use `![logo](logo.jpg)` to insert `logo.jpg`.</span><br><span class="line"></span><br><span class="line"># History</span><br><span class="line"></span><br><span class="line">2018-04-18: support hexo-abbrlink</span><br></pre></td></tr></table></figure>
-
-
-
-<p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
 ]]></content>
   </entry>
 </search>
