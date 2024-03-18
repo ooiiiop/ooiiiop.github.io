@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>a</title>
+    <title>尝试出一道密码题</title>
     <url>/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/</url>
     <content><![CDATA[<h1 id="尝试出一道密码题"><a href="#尝试出一道密码题" class="headerlink" title="尝试出一道密码题"></a>尝试出一道密码题</h1><h3 id="1-将py文件打包成可执行文件"><a href="#1-将py文件打包成可执行文件" class="headerlink" title="1.将py文件打包成可执行文件"></a>1.将py文件打包成可执行文件</h3><p>参考 ：</p>
 <p><a href="https://blog.csdn.net/weixin_43804047/article/details/119704965">https://blog.csdn.net/weixin_43804047/article/details/119704965</a></p>
@@ -52,6 +52,21 @@
 
 <img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240313205518380.png" class title="image-20240313205518380">
 
+
+
+<p>因为docker很慢，从阿里云获取加速器地址</p>
+<p><a href="https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors">https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors</a></p>
+<img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240314173714199.png" class title="image-20240314173714199">
+
+<p>配置镜像加速器 本来是这种</p>
+<img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240314173819040.png" class title="image-20240314173819040">
+
+<p>现在粘贴进加速器，将网页中的加速器地址写进文件中</p>
+<img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240314173924219.png" class title="image-20240314173924219">重新加载，然后重启docker服务
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─# vim /etc/docker/daemon.json</span><br><span class="line">                                                                                                             </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─# cat /etc/docker/daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [</span><br><span class="line">    &quot;https://2m99kspa.mirror.aliyuncs.com&quot;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">                                                                                                             </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─# systemctl daemon-reload</span><br><span class="line">                                                                                                             </span><br><span class="line">┌──(root㉿kali)-[~]</span><br><span class="line">└─# systemctl restart docker</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/image-20240314174019193.png" class title="image-20240314174019193">
 ]]></content>
   </entry>
   <entry>
@@ -94,5 +109,67 @@
 
 <p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>应急响应靶场1</title>
+    <url>/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/</url>
+    <content><![CDATA[<blockquote>
+<p>前景需要：</p>
+<p>小李在值守的过程中，发现有CPU占用飙升，出于胆子小，就立刻将服务器关机，并找来正在吃苕皮的hxd帮他分析，这是他的服务器系统，请你找出以下内容，并作为通关条件：</p>
+<p>1.攻击者的shell密码</p>
+<p>2.攻击者的IP地址</p>
+<p>3.攻击者的隐藏账户名称</p>
+<p>4.攻击者挖矿程序的矿池域名(仅域名)</p>
+<p>5.有实力的可以尝试着修复漏洞</p>
+</blockquote>
+<p>打开镜像</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163806458.png" class title="image-20240318163806458">
+
+<h1 id="1-攻击者的shell密码"><a href="#1-攻击者的shell密码" class="headerlink" title="1.攻击者的shell密码"></a>1.攻击者的shell密码</h1><p>进去就看到小皮了 猜测有个网站</p>
+<p>打开小皮，打开网站根目录<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163558725.png" class title="image-20240318163558725"></p>
+<p>网站根目录：<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163911665.png" class title="image-20240318163911665"></p>
+<p>把d盾拉进虚拟机</p>
+<p>扫一下看看</p>
+<p>可以看到后门<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163951929.png" class title="image-20240318163951929"></p>
+<p>打开看看</p>
+<p>可以看到密码了</p>
+<h3 id="rebeyond"><a href="#rebeyond" class="headerlink" title="rebeyond"></a>rebeyond<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318164048987.png" class title="image-20240318164048987"></h3><h1 id="2-攻击者的IP地址"><a href="#2-攻击者的IP地址" class="headerlink" title="2.攻击者的IP地址"></a>2.攻击者的IP地址</h1><p>上网搜了搜 查找攻击者的ip要到日志去找</p>
+<p>查看logs</p>
+<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs\access.log</p>
+<p>直接搜索shell，可以找到ip</p>
+<h3 id="192-168-126-1"><a href="#192-168-126-1" class="headerlink" title="192.168.126.1"></a>192.168.126.1<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318165912130.png" class title="image-20240318165912130"></h3><h1 id="3-攻击者的隐藏账户名称"><a href="#3-攻击者的隐藏账户名称" class="headerlink" title="3.攻击者的隐藏账户名称"></a>3.攻击者的隐藏账户名称</h1><blockquote>
+<p>这里参考</p>
+<p><a href="https://blog.csdn.net/qq_51577576/article/details/129973356">https://blog.csdn.net/qq_51577576/article/details/129973356</a></p>
+</blockquote>
+<h2 id="第一个方法-管理账户查看"><a href="#第一个方法-管理账户查看" class="headerlink" title="第一个方法 管理账户查看"></a>第一个方法 管理账户查看</h2><p>通过控制面板–&gt;用户账户–&gt;管理账户查看</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170455397.png" class title="image-20240318170455397">
+
+<p>但是这里被隐藏了 不能看到什么</p>
+<h2 id="第二个方法-管理工具查看"><a href="#第二个方法-管理工具查看" class="headerlink" title="第二个方法 管理工具查看"></a>第二个方法 管理工具查看</h2><p>通过管理工具–&gt;计算机管理–&gt;本地用户和组–&gt;用户<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170615698.png" class title="image-20240318170615698"></p>
+<p>这里很明显了 就是</p>
+<h3 id="hack168"><a href="#hack168" class="headerlink" title="hack168$"></a>hack168$<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170632386.png" class title="image-20240318170632386"></h3><h1 id="4-攻击者挖矿程序的矿池域名"><a href="#4-攻击者挖矿程序的矿池域名" class="headerlink" title="4.攻击者挖矿程序的矿池域名"></a>4.攻击者挖矿程序的矿池域名</h1><p>这里没什么思路</p>
+<blockquote>
+<p>挖矿参考</p>
+<p><a href="https://zhuanlan.zhihu.com/p/108688360">https://zhuanlan.zhihu.com/p/108688360</a></p>
+</blockquote>
+<p>当服务器或PC处于什么样的状态时，我们可以判定为被挖矿。通常来说，当我们的服务器或PC资源(CPU)使用率接近或超过100%，并持续高居不下导致服务器或PC操作延缓，我们就可以判定被挖矿</p>
+<p>在这个桌面文件夹上看到可疑的文件<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318193231545.png" class title="image-20240318193231545"></p>
+<p>我们可以发现在双击运行的时候 直接卡爆</p>
+<p>那就是挖矿程序无疑了</p>
+<p>本来想直接在虚拟机操作的  无奈没有python环境又拖出来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/extremecoders-re/pyinstxtractor</span><br></pre></td></tr></table></figure>
+
+<p>把Kuang.exe放到根目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python ./pyinstxtractor.py Kuang.exe</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194659519.png" class title="image-20240318194659519">
+
+<p>可以发现多了一个文件夹 找到Kuang.pyc</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194808998.png" class title="image-20240318194808998">
+
+<p><a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
+<p>使用在线网站进行python反编译<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318195554037.png" class title="image-20240318195554037"></p>
+<p>找到域名</p>
+<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3>]]></content>
   </entry>
 </search>
