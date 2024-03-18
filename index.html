@@ -171,7 +171,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-03-18 16:30:10 / 修改时间：19:57:52" itemprop="dateCreated datePublished" datetime="2024-03-18T16:30:10+08:00">2024-03-18</time>
+              <time title="创建时间：2024-03-18 16:30:10 / 修改时间：20:05:09" itemprop="dateCreated datePublished" datetime="2024-03-18T16:30:10+08:00">2024-03-18</time>
             </span>
 
           
@@ -185,64 +185,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>前景需要：</p>
-<p>小李在值守的过程中，发现有CPU占用飙升，出于胆子小，就立刻将服务器关机，并找来正在吃苕皮的hxd帮他分析，这是他的服务器系统，请你找出以下内容，并作为通关条件：</p>
-<p>1.攻击者的shell密码</p>
-<p>2.攻击者的IP地址</p>
-<p>3.攻击者的隐藏账户名称</p>
-<p>4.攻击者挖矿程序的矿池域名(仅域名)</p>
-<p>5.有实力的可以尝试着修复漏洞</p>
-</blockquote>
-<p>打开镜像</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163806458.png" class title="image-20240318163806458">
-
-<h1 id="1-攻击者的shell密码"><a href="#1-攻击者的shell密码" class="headerlink" title="1.攻击者的shell密码"></a>1.攻击者的shell密码</h1><p>进去就看到小皮了 猜测有个网站</p>
-<p>打开小皮，打开网站根目录<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163558725.png" class title="image-20240318163558725"></p>
-<p>网站根目录：<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163911665.png" class title="image-20240318163911665"></p>
-<p>把d盾拉进虚拟机</p>
-<p>扫一下看看</p>
-<p>可以看到后门<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163951929.png" class title="image-20240318163951929"></p>
-<p>打开看看</p>
-<p>可以看到密码了</p>
-<h3 id="rebeyond"><a href="#rebeyond" class="headerlink" title="rebeyond"></a>rebeyond<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318164048987.png" class title="image-20240318164048987"></h3><h1 id="2-攻击者的IP地址"><a href="#2-攻击者的IP地址" class="headerlink" title="2.攻击者的IP地址"></a>2.攻击者的IP地址</h1><p>上网搜了搜 查找攻击者的ip要到日志去找</p>
-<p>查看logs</p>
-<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs\access.log</p>
-<p>直接搜索shell，可以找到ip</p>
-<h3 id="192-168-126-1"><a href="#192-168-126-1" class="headerlink" title="192.168.126.1"></a>192.168.126.1<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318165912130.png" class title="image-20240318165912130"></h3><h1 id="3-攻击者的隐藏账户名称"><a href="#3-攻击者的隐藏账户名称" class="headerlink" title="3.攻击者的隐藏账户名称"></a>3.攻击者的隐藏账户名称</h1><blockquote>
-<p>这里参考</p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_51577576/article/details/129973356">https://blog.csdn.net/qq_51577576/article/details/129973356</a></p>
-</blockquote>
-<h2 id="第一个方法-管理账户查看"><a href="#第一个方法-管理账户查看" class="headerlink" title="第一个方法 管理账户查看"></a>第一个方法 管理账户查看</h2><p>通过控制面板–&gt;用户账户–&gt;管理账户查看</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170455397.png" class title="image-20240318170455397">
-
-<p>但是这里被隐藏了 不能看到什么</p>
-<h2 id="第二个方法-管理工具查看"><a href="#第二个方法-管理工具查看" class="headerlink" title="第二个方法 管理工具查看"></a>第二个方法 管理工具查看</h2><p>通过管理工具–&gt;计算机管理–&gt;本地用户和组–&gt;用户<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170615698.png" class title="image-20240318170615698"></p>
-<p>这里很明显了 就是</p>
-<h3 id="hack168"><a href="#hack168" class="headerlink" title="hack168$"></a>hack168$<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170632386.png" class title="image-20240318170632386"></h3><h1 id="4-攻击者挖矿程序的矿池域名"><a href="#4-攻击者挖矿程序的矿池域名" class="headerlink" title="4.攻击者挖矿程序的矿池域名"></a>4.攻击者挖矿程序的矿池域名</h1><p>这里没什么思路</p>
-<blockquote>
-<p>挖矿参考</p>
-<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/108688360">https://zhuanlan.zhihu.com/p/108688360</a></p>
-</blockquote>
-<p>当服务器或PC处于什么样的状态时，我们可以判定为被挖矿。通常来说，当我们的服务器或PC资源(CPU)使用率接近或超过100%，并持续高居不下导致服务器或PC操作延缓，我们就可以判定被挖矿</p>
-<p>在这个桌面文件夹上看到可疑的文件<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318193231545.png" class title="image-20240318193231545"></p>
-<p>我们可以发现在双击运行的时候 直接卡爆</p>
-<p>那就是挖矿程序无疑了</p>
-<p>本来想直接在虚拟机操作的  无奈没有python环境又拖出来</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/extremecoders-re/pyinstxtractor</span><br></pre></td></tr></table></figure>
-
-<p>把Kuang.exe放到根目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python ./pyinstxtractor.py Kuang.exe</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194659519.png" class title="image-20240318194659519">
-
-<p>可以发现多了一个文件夹 找到Kuang.pyc</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194808998.png" class title="image-20240318194808998">
-
-<p><a target="_blank" rel="noopener" href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
-<p>使用在线网站进行python反编译<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318195554037.png" class title="image-20240318195554037"></p>
-<p>找到域名</p>
-<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a target="_blank" rel="noopener" href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3>
+          <p>这是显示在首页的概述，正文内容均会被隐藏。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
