@@ -170,6 +170,44 @@
 <p><a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
 <p>使用在线网站进行python反编译<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318195554037.png" class title="image-20240318195554037"></p>
 <p>找到域名</p>
-<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3>]]></content>
+<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3><img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318202650762.png" class title="image-20240318202650762">
+]]></content>
+  </entry>
+  <entry>
+    <title>应急响应靶场2</title>
+    <url>/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/</url>
+    <content><![CDATA[<blockquote>
+<p>前景需要:小李在某单位驻场值守，深夜12点，甲方已经回家了，小李刚偷偷摸鱼后发现安全设备有告警，于是立刻停掉了机器开始排查。<br>这是他的服务器系统°，请你找出以下内容，并作为通关条件:<br>1.攻击者的IP地址(两个)?<br>2.攻击者的webshel文件名?<br>3.攻击者的webshell密码?<br>4.攻击者的伪QQ号?<br>5.攻击者的伪服务器IP地址?<br>6.攻击者的服务器端口?<br>7.攻击者是如何入侵的(选择题)?<br>8.攻击者的隐藏用户名?<br>用户:administrator<br>密码:<a href="mailto:&#90;&#103;&#x73;&#x66;&#x40;&#113;&#113;&#46;&#x63;&#111;&#109;">&#90;&#103;&#x73;&#x66;&#x40;&#113;&#113;&#46;&#x63;&#111;&#109;</a></p>
+</blockquote>
+<h1 id="攻击者的webshel文件名"><a href="#攻击者的webshel文件名" class="headerlink" title="攻击者的webshel文件名?"></a>攻击者的webshel文件名?</h1><p>进入虚拟机，进入小皮 跟靶机1一样，有个网站<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212603627.png" class title="image-20240319212603627"></p>
+<p>进入网站根目录 还是用d盾扫一下 可以看到后门</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212724915.png" class title="image-20240319212724915">
+
+<h3 id="system-php"><a href="#system-php" class="headerlink" title="system.php"></a>system.php</h3><h1 id="攻击者的webshell密码"><a href="#攻击者的webshell密码" class="headerlink" title="攻击者的webshell密码?"></a>攻击者的webshell密码?</h1><p>直接打开system.php查看</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213721611.png" class title="image-20240319213721611">
+
+<h3 id="hack6618"><a href="#hack6618" class="headerlink" title="hack6618"></a>hack6618</h3><h1 id="攻击者的IP地址-两个"><a href="#攻击者的IP地址-两个" class="headerlink" title="攻击者的IP地址(两个)?"></a>攻击者的IP地址(两个)?</h1><p>查看日志</p>
+<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs目录下有个日志</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213919787.png" class title="image-20240319213919787">
+
+<p>时间查看器</p>
+<p>win+r  Eventvwr<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319220248259.png" class title="image-20240319220248259"></p>
+<h3 id="192-168-126-135"><a href="#192-168-126-135" class="headerlink" title="192.168.126.135"></a>192.168.126.135</h3><h3 id="192-168-126-129"><a href="#192-168-126-129" class="headerlink" title="192.168.126.129"></a>192.168.126.129</h3><h1 id="攻击者是如何入侵的-选择题"><a href="#攻击者是如何入侵的-选择题" class="headerlink" title="攻击者是如何入侵的(选择题)?"></a>攻击者是如何入侵的(选择题)?</h1><p>在C:\phpstudy_pro\Extensions\FTP0.9.60\Logs目录下看到日志</p>
+<p>当时看到ftp文件夹其实就怀疑是ftp了</p>
+<p>​	<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204305524.png" class title="image-20240320204305524"></p>
+<p>可以看到上传了system.php<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204348353.png" class title="image-20240320204348353"></p>
+<h3 id="tcp"><a href="#tcp" class="headerlink" title="tcp"></a>tcp</h3><h1 id="攻击者的隐藏用户名"><a href="#攻击者的隐藏用户名" class="headerlink" title="攻击者的隐藏用户名?"></a>攻击者的隐藏用户名?</h1><p>win+r lusrmgr.msc</p>
+<p>用户名里面<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320205728185.png" class title="image-20240320205728185"></p>
+<h3 id="hack887"><a href="#hack887" class="headerlink" title="hack887"></a>hack887</h3><h1 id="攻击者的伪QQ号"><a href="#攻击者的伪QQ号" class="headerlink" title="攻击者的伪QQ号?"></a>攻击者的伪QQ号?</h1><p>在文档内找到Tencent Files</p>
+<p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320214927142.png" class title="image-20240320214927142">
+
+<h3 id="777888999321"><a href="#777888999321" class="headerlink" title="777888999321"></a>777888999321</h3><h1 id="攻击者的伪服务器IP地址"><a href="#攻击者的伪服务器IP地址" class="headerlink" title="攻击者的伪服务器IP地址?"></a>攻击者的伪服务器IP地址?</h1><p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321\FileRecv\frp_0.54.0_windows_amd64\frp_0.54.0_windows_amd64</p>
+<p>看到配置文件ini</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215033067.png" class title="image-20240320215033067">
+
+<h3 id="256-256-66-88"><a href="#256-256-66-88" class="headerlink" title="256.256.66.88"></a>256.256.66.88</h3><h1 id="攻击者的服务器端口"><a href="#攻击者的服务器端口" class="headerlink" title="攻击者的服务器端口?"></a>攻击者的服务器端口?</h1><p>见上</p>
+<h3 id="65535"><a href="#65535" class="headerlink" title="65535"></a>65535</h3><img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215403365.png" class title="image-20240320215403365">
+]]></content>
   </entry>
 </search>
