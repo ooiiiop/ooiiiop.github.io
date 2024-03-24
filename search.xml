@@ -136,7 +136,7 @@
     <title>应急响应靶场2</title>
     <url>/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/</url>
     <content><![CDATA[<blockquote>
-<p>前景需要:小李在某单位驻场值守，深夜12点，甲方已经回家了，小李刚偷偷摸鱼后发现安全设备有告警，于是立刻停掉了机器开始排查。<br>这是他的服务器系统°，请你找出以下内容，并作为通关条件:<br>1.攻击者的IP地址(两个)?<br>2.攻击者的webshel文件名?<br>3.攻击者的webshell密码?<br>4.攻击者的伪QQ号?<br>5.攻击者的伪服务器IP地址?<br>6.攻击者的服务器端口?<br>7.攻击者是如何入侵的(选择题)?<br>8.攻击者的隐藏用户名?<br>用户:administrator<br>密码:<a href="mailto:&#x5a;&#x67;&#x73;&#102;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#x5a;&#x67;&#x73;&#102;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>前景需要:小李在某单位驻场值守，深夜12点，甲方已经回家了，小李刚偷偷摸鱼后发现安全设备有告警，于是立刻停掉了机器开始排查。<br>这是他的服务器系统°，请你找出以下内容，并作为通关条件:<br>1.攻击者的IP地址(两个)?<br>2.攻击者的webshel文件名?<br>3.攻击者的webshell密码?<br>4.攻击者的伪QQ号?<br>5.攻击者的伪服务器IP地址?<br>6.攻击者的服务器端口?<br>7.攻击者是如何入侵的(选择题)?<br>8.攻击者的隐藏用户名?<br>用户:administrator<br>密码:<a href="mailto:&#x5a;&#103;&#x73;&#x66;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x5a;&#103;&#x73;&#x66;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></p>
 </blockquote>
 <h1 id="攻击者的webshel文件名"><a href="#攻击者的webshel文件名" class="headerlink" title="攻击者的webshel文件名?"></a>攻击者的webshel文件名?</h1><p>进入虚拟机，进入小皮 跟靶机1一样，有个网站<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212603627.png" class title="image-20240319212603627"></p>
 <p>进入网站根目录 还是用d盾扫一下 可以看到后门</p>
@@ -167,47 +167,6 @@
 
 <h3 id="256-256-66-88"><a href="#256-256-66-88" class="headerlink" title="256.256.66.88"></a>256.256.66.88</h3><h1 id="攻击者的服务器端口"><a href="#攻击者的服务器端口" class="headerlink" title="攻击者的服务器端口?"></a>攻击者的服务器端口?</h1><p>见上</p>
 <h3 id="65535"><a href="#65535" class="headerlink" title="65535"></a>65535</h3><img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215403365.png" class title="image-20240320215403365">
-]]></content>
-  </entry>
-  <entry>
-    <title>解决hexo无法显示本地图片问题</title>
-    <url>/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>太好笑了真是</p>
-<p>刚写完博客然后发现图片显示不了</p>
-<p>就都是下面这样的<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314160211852.png" class title="image-20240314160211852"></p>
-<p>好好好确实可以记录一下 毕竟翻了很多资料人家都说找了很久 然后给的解决方案也没有一个能成的</p>
-<p>后来慢慢摸索出来的 可以记录一下</p>
-<h2 id="1-配置站点文件"><a href="#1-配置站点文件" class="headerlink" title="1.配置站点文件"></a>1.配置站点文件</h2><p>将<code>_config.yml</code> 文件中的<code>post_asset_folder</code> 选项设为 <code>true</code></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-Typora中进行图像设置"><a href="#2-Typora中进行图像设置" class="headerlink" title="2.Typora中进行图像设置"></a>2.Typora中进行图像设置</h2><p>文件–偏好设置–图像</p>
-<p>设置如下：</p>
-<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314161053110.png" class title="image-20240314161053110">
-
-<p>这样设置的目的就是使得我引用的图片路径是相对路径</p>
-<p>就像这里的图片路径是 （解决hexo无法显示本地图片问题&#x2F;image-20240314161053110.png）</p>
-<p>只有这样的路径才能显示	</p>
-<h2 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3.安装插件"></a>3.安装插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
-
-<p>安装插件：</p>
-<p>虽然在source&#x2F;_posts文件夹下写了md文件，也有了图片资源文件夹存了图片，但从我们前面typora中的设置不难知道，实际上md文件中的图片路径都是相对路径（.&#x2F;${filename}）。而实际网上看到是html文件，从md到html的转变就是hexo帮我们做的，hexo g命令就是干这个的。转换后的html文件在public目录下，路径是通过日期指示的。</p>
-<p>效果：</p>
-<p>就是可以生成同名的文件夹用来装图片<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314162510260.png" class title="image-20240314162510260"></p>
-<h2 id="4-修改html"><a href="#4-修改html" class="headerlink" title="4.修改html"></a>4.修改html</h2><p>先进行渲染</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<p>然后可以在C:\Users\wy199\myblog\public\2024\03\14\b路径下找到html文件</p>
-<p>打开搜索图片的路径</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;&lt;img src=&quot;/./b/image-20240314153630768.png&quot; alt=&quot;image-20240314153630768&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
-
-<p>要修改成下面这样，路径重复了<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314163455657.png" class title="image-20240314163455657"></p>
-<p>后来读了一下C:\Users\wy199\myblog\node_modules\hexo-asset-image\readme.md</p>
-<p>Just use <code>![logo](logo.jpg)</code> to insert <code>logo.jpg</code>.</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># hexo-asset-image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Give asset image in hexo a absolutely path automatically</span><br><span class="line"></span><br><span class="line"># Usege</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"># Example</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">MacGesture2-Publish.md</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">Make sure `post_asset_folder: true` in your `_config.yml`.</span><br><span class="line"></span><br><span class="line">Just use `![logo](logo.jpg)` to insert `logo.jpg`.</span><br><span class="line"></span><br><span class="line"># History</span><br><span class="line"></span><br><span class="line">2018-04-18: support hexo-abbrlink</span><br></pre></td></tr></table></figure>
-
-
-
-<p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
 ]]></content>
   </entry>
   <entry>
@@ -252,18 +211,60 @@
 <h3 id="flag-888666abc"><a href="#flag-888666abc" class="headerlink" title="flag{888666abc}"></a>flag{888666abc}</h3><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324112123065.png" class title="image-20240324112123065">
 
 <p>下面要更换hack6618$的密码</p>
-<p>net user hack6618$ <a href="mailto:&#97;&#97;&#97;&#49;&#49;&#x31;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;">&#97;&#97;&#97;&#49;&#49;&#x31;&#x40;&#x71;&#x71;&#46;&#x63;&#111;&#x6d;</a><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114110599.png" class title="image-20240324114110599"></p>
+<p>net user hack6618$ <a href="mailto:&#x61;&#x61;&#97;&#49;&#x31;&#x31;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#x61;&#x61;&#97;&#49;&#x31;&#x31;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114110599.png" class title="image-20240324114110599"></p>
 <p>打开任务计划程序<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114150651.png" class title="image-20240324114150651"><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324113932782.png" class title="image-20240324113932782"></p>
 <h3 id="flag-zgsfsys-sec"><a href="#flag-zgsfsys-sec" class="headerlink" title="flag{zgsfsys@sec}"></a>flag{zgsfsys@sec}</h3><p>打开网站</p>
 <img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324115000415.png" class title="image-20240324115000415">
 
 <p>后台登录 用几个弱口令试了一下没成功<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324115849616.png" class title="image-20240324115849616"></p>
 <p>直接上网搜了下z-blog免密码登录</p>
+<p>[Zblog免密码&#x2F;忘记密码登录后台工具]: <a href="https://cloud.tencent.com/developer/article/2162537#:~:text=%E8%BF%99%E4%B8%AA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E8%B5%B7%E6%9D%A5%E4%B9%9F%E9%9D%9E%E5%B8%B8%E7%AE%80%E5%8D%95%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%8C%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AAnologin.php%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8A%E4%BC%A0%E5%88%B0%20%E6%9C%8D%E5%8A%A1%E5%99%A8%20%E7%9A%84%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%87%8C%E9%9D%A2%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E2%80%9C%E4%BD%A0%E7%9A%84%E5%9F%9F%E5%90%8D%2Fnologin.php%E2%80%9D%EF%BC%8C%E6%89%93%E5%BC%80%E5%90%8E%E6%9D%A5%E5%88%B0%E4%BB%A5%E4%B8%8B%E7%95%8C%E9%9D%A2%EF%BC%9A%20Zblog%E5%85%8D%E5%AF%86%E7%A0%81%2F%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0%E5%B7%A5%E5%85%B7%2CZblog%E5%85%8D%E5%AF%86%E7%A0%81%2F%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0%E5%B7%A5%E5%85%B7%20%E6%96%B9%E6%B3%95%20%E5%AF%86%E7%A0%81%20%E5%B7%A5%E5%85%B7%20%E6%96%87%E4%BB%B6,%E7%9B%AE%E5%BD%95%20%E6%A0%B9%20%E5%9F%9F%E5%90%8D%2Fnologin.php%20%E7%AC%AC1%E5%BC%A0%2C%E6%96%B9%E6%B3%95%2C%E5%AF%86%E7%A0%81%2C%E5%B7%A5%E5%85%B7%2C%E6%96%87%E4%BB%B6%2Czblog%2C%E5%90%8E%E5%8F%B0%2C%E7%9B%AE%E5%BD%95%2C%E6%A0%B9%2C%E5%9F%9F%E5%90%8D%2Fnologin.php%2C%E7%AC%AC1%E5%BC%A0%20%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E7%99%BB%E5%BD%95%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86......%20%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E6%97%A0%E6%95%88%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%EF%BC%89%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%BF%9B%20%E6%95%B0%E6%8D%AE%E5%BA%93%20%E9%87%8C%E9%9D%A2%E4%BF%AE%E6%94%B9%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D%E6%98%AF%E2%80%9Czbp_member%E2%80%9D%EF%BC%8C%E9%87%8C%E9%9D%A2%E7%9A%84%E2%80%9Cmem_password%E2%80%9D%E5%B0%B1%E6%98%AF%E5%AF%86%E7%A0%81%EF%BC%8CMD5%E5%8A%A0%E5%AF%86%E8%BF%87%E7%9A%84%EF%BC%8C%E8%A7%A3%E5%AF%86%E6%88%96%E8%80%85%E7%94%A8%E2%80%9Cadmin%E2%80%9C%E5%8A%A0%E5%AF%86%E5%90%8E%E6%9B%BF%E6%8D%A2%E5%8D%B3%E5%8F%AF%E3%80%82">https://cloud.tencent.com/developer/article/2162537#:~:text=%E8%BF%99%E4%B8%AA%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8%E8%B5%B7%E6%9D%A5%E4%B9%9F%E9%9D%9E%E5%B8%B8%E7%AE%80%E5%8D%95%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%90%8E%E8%A7%A3%E5%8E%8B%EF%BC%8C%E5%BE%97%E5%88%B0%E4%B8%80%E4%B8%AAnologin.php%E6%96%87%E4%BB%B6%EF%BC%8C%E4%B8%8A%E4%BC%A0%E5%88%B0%20%E6%9C%8D%E5%8A%A1%E5%99%A8%20%E7%9A%84%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%87%8C%E9%9D%A2%EF%BC%8C%E7%84%B6%E5%90%8E%E5%9C%A8%E6%B5%8F%E8%A7%88%E5%99%A8%E8%BE%93%E5%85%A5%E2%80%9C%E4%BD%A0%E7%9A%84%E5%9F%9F%E5%90%8D%2Fnologin.php%E2%80%9D%EF%BC%8C%E6%89%93%E5%BC%80%E5%90%8E%E6%9D%A5%E5%88%B0%E4%BB%A5%E4%B8%8B%E7%95%8C%E9%9D%A2%EF%BC%9A%20Zblog%E5%85%8D%E5%AF%86%E7%A0%81%2F%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0%E5%B7%A5%E5%85%B7%2CZblog%E5%85%8D%E5%AF%86%E7%A0%81%2F%E5%BF%98%E8%AE%B0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95%E5%90%8E%E5%8F%B0%E5%B7%A5%E5%85%B7%20%E6%96%B9%E6%B3%95%20%E5%AF%86%E7%A0%81%20%E5%B7%A5%E5%85%B7%20%E6%96%87%E4%BB%B6,%E7%9B%AE%E5%BD%95%20%E6%A0%B9%20%E5%9F%9F%E5%90%8D%2Fnologin.php%20%E7%AC%AC1%E5%BC%A0%2C%E6%96%B9%E6%B3%95%2C%E5%AF%86%E7%A0%81%2C%E5%B7%A5%E5%85%B7%2C%E6%96%87%E4%BB%B6%2Czblog%2C%E5%90%8E%E5%8F%B0%2C%E7%9B%AE%E5%BD%95%2C%E6%A0%B9%2C%E5%9F%9F%E5%90%8D%2Fnologin.php%2C%E7%AC%AC1%E5%BC%A0%20%E7%84%B6%E5%90%8E%E7%82%B9%E5%87%BB%E7%99%BB%E5%BD%95%E5%B0%B1%E5%8F%AF%E4%BB%A5%E4%BA%86......%20%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%88%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%96%B9%E6%B3%95%E6%97%A0%E6%95%88%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%BF%E7%94%A8%EF%BC%89%EF%BC%9A%E7%9B%B4%E6%8E%A5%E8%BF%9B%20%E6%95%B0%E6%8D%AE%E5%BA%93%20%E9%87%8C%E9%9D%A2%E4%BF%AE%E6%94%B9%EF%BC%8C%E6%95%B0%E6%8D%AE%E5%BA%93%E8%A1%A8%E5%90%8D%E6%98%AF%E2%80%9Czbp_member%E2%80%9D%EF%BC%8C%E9%87%8C%E9%9D%A2%E7%9A%84%E2%80%9Cmem_password%E2%80%9D%E5%B0%B1%E6%98%AF%E5%AF%86%E7%A0%81%EF%BC%8CMD5%E5%8A%A0%E5%AF%86%E8%BF%87%E7%9A%84%EF%BC%8C%E8%A7%A3%E5%AF%86%E6%88%96%E8%80%85%E7%94%A8%E2%80%9Cadmin%E2%80%9C%E5%8A%A0%E5%AF%86%E5%90%8E%E6%9B%BF%E6%8D%A2%E5%8D%B3%E5%8F%AF%E3%80%82</a>	“Zblog免密码&#x2F;忘记密码登录后台工具”</p>
 <p>然后就发现了nologin这个东西</p>
 <p>下载解压后放在Zblog网站所在的根目录<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324120024566.png" class title="image-20240324120024566"></p>
 <p>访问&#x2F;nologin.php</p>
 <p>确实有点强<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324120052687.png" class title="image-20240324120052687"></p>
 <p>在用户管理里面找到hacker 里面有flag<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324120206013.png" class title="image-20240324120206013"></p>
 <h3 id="flag-H-Ck-sec"><a href="#flag-H-Ck-sec" class="headerlink" title="flag{H@Ck@sec}"></a>flag{H@Ck@sec}</h3>]]></content>
+  </entry>
+  <entry>
+    <title>解决hexo无法显示本地图片问题</title>
+    <url>/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>太好笑了真是</p>
+<p>刚写完博客然后发现图片显示不了</p>
+<p>就都是下面这样的<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314160211852.png" class title="image-20240314160211852"></p>
+<p>好好好确实可以记录一下 毕竟翻了很多资料人家都说找了很久 然后给的解决方案也没有一个能成的</p>
+<p>后来慢慢摸索出来的 可以记录一下</p>
+<h2 id="1-配置站点文件"><a href="#1-配置站点文件" class="headerlink" title="1.配置站点文件"></a>1.配置站点文件</h2><p>将<code>_config.yml</code> 文件中的<code>post_asset_folder</code> 选项设为 <code>true</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-Typora中进行图像设置"><a href="#2-Typora中进行图像设置" class="headerlink" title="2.Typora中进行图像设置"></a>2.Typora中进行图像设置</h2><p>文件–偏好设置–图像</p>
+<p>设置如下：</p>
+<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314161053110.png" class title="image-20240314161053110">
+
+<p>这样设置的目的就是使得我引用的图片路径是相对路径</p>
+<p>就像这里的图片路径是 （解决hexo无法显示本地图片问题&#x2F;image-20240314161053110.png）</p>
+<p>只有这样的路径才能显示	</p>
+<h2 id="3-安装插件"><a href="#3-安装插件" class="headerlink" title="3.安装插件"></a>3.安装插件</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm install https://github.com/CodeFalling/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p>安装插件：</p>
+<p>虽然在source&#x2F;_posts文件夹下写了md文件，也有了图片资源文件夹存了图片，但从我们前面typora中的设置不难知道，实际上md文件中的图片路径都是相对路径（.&#x2F;${filename}）。而实际网上看到是html文件，从md到html的转变就是hexo帮我们做的，hexo g命令就是干这个的。转换后的html文件在public目录下，路径是通过日期指示的。</p>
+<p>效果：</p>
+<p>就是可以生成同名的文件夹用来装图片<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314162510260.png" class title="image-20240314162510260"></p>
+<h2 id="4-修改html"><a href="#4-修改html" class="headerlink" title="4.修改html"></a>4.修改html</h2><p>先进行渲染</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+
+<p>然后可以在C:\Users\wy199\myblog\public\2024\03\14\b路径下找到html文件</p>
+<p>打开搜索图片的路径</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;p&gt;&lt;img src=&quot;/./b/image-20240314153630768.png&quot; alt=&quot;image-20240314153630768&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+
+<p>要修改成下面这样，路径重复了<img src="/2024/03/14/%E8%A7%A3%E5%86%B3hexo%E6%97%A0%E6%B3%95%E6%98%BE%E7%A4%BA%E6%9C%AC%E5%9C%B0%E5%9B%BE%E7%89%87%E9%97%AE%E9%A2%98/image-20240314163455657.png" class title="image-20240314163455657"></p>
+<p>后来读了一下C:\Users\wy199\myblog\node_modules\hexo-asset-image\readme.md</p>
+<p>Just use <code>![logo](logo.jpg)</code> to insert <code>logo.jpg</code>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># hexo-asset-image</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Give asset image in hexo a absolutely path automatically</span><br><span class="line"></span><br><span class="line"># Usege</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">npm install hexo-asset-image --save</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"># Example</span><br><span class="line"></span><br><span class="line">```shell</span><br><span class="line">MacGesture2-Publish</span><br><span class="line">├── apppicker.jpg</span><br><span class="line">├── logo.jpg</span><br><span class="line">└── rules.jpg</span><br><span class="line">MacGesture2-Publish.md</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">Make sure `post_asset_folder: true` in your `_config.yml`.</span><br><span class="line"></span><br><span class="line">Just use `![logo](logo.jpg)` to insert `logo.jpg`.</span><br><span class="line"></span><br><span class="line"># History</span><br><span class="line"></span><br><span class="line">2018-04-18: support hexo-abbrlink</span><br></pre></td></tr></table></figure>
+
+
+
+<p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
+]]></content>
   </entry>
 </search>
