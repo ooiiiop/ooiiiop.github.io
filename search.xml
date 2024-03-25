@@ -1,6 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>应急响应靶场1</title>
+    <url>/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/</url>
+    <content><![CDATA[<blockquote>
+<p>前景需要：</p>
+<p>小李在值守的过程中，发现有CPU占用飙升，出于胆子小，就立刻将服务器关机，并找来正在吃苕皮的hxd帮他分析，这是他的服务器系统，请你找出以下内容，并作为通关条件：</p>
+<p>1.攻击者的shell密码</p>
+<p>2.攻击者的IP地址</p>
+<p>3.攻击者的隐藏账户名称</p>
+<p>4.攻击者挖矿程序的矿池域名(仅域名)</p>
+<p>5.有实力的可以尝试着修复漏洞</p>
+</blockquote>
+<p>打开镜像</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163806458.png" class title="image-20240318163806458">
+
+<h1 id="1-攻击者的shell密码"><a href="#1-攻击者的shell密码" class="headerlink" title="1.攻击者的shell密码"></a>1.攻击者的shell密码</h1><p>进去就看到小皮了 猜测有个网站</p>
+<p>打开小皮，打开网站根目录<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163558725.png" class title="image-20240318163558725"></p>
+<p>网站根目录：<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163911665.png" class title="image-20240318163911665"></p>
+<p>把d盾拉进虚拟机</p>
+<p>扫一下看看</p>
+<p>可以看到后门<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163951929.png" class title="image-20240318163951929"></p>
+<p>打开看看</p>
+<p>可以看到密码了</p>
+<h3 id="rebeyond"><a href="#rebeyond" class="headerlink" title="rebeyond"></a>rebeyond<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318164048987.png" class title="image-20240318164048987"></h3><h1 id="2-攻击者的IP地址"><a href="#2-攻击者的IP地址" class="headerlink" title="2.攻击者的IP地址"></a>2.攻击者的IP地址</h1><p>上网搜了搜 查找攻击者的ip要到日志去找</p>
+<p>查看logs</p>
+<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs\access.log</p>
+<p>直接搜索shell，可以找到ip</p>
+<h3 id="192-168-126-1"><a href="#192-168-126-1" class="headerlink" title="192.168.126.1"></a>192.168.126.1<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318165912130.png" class title="image-20240318165912130"></h3><h1 id="3-攻击者的隐藏账户名称"><a href="#3-攻击者的隐藏账户名称" class="headerlink" title="3.攻击者的隐藏账户名称"></a>3.攻击者的隐藏账户名称</h1><blockquote>
+<p>这里参考</p>
+<p><a href="https://blog.csdn.net/qq_51577576/article/details/129973356">https://blog.csdn.net/qq_51577576/article/details/129973356</a></p>
+</blockquote>
+<h2 id="第一个方法-管理账户查看"><a href="#第一个方法-管理账户查看" class="headerlink" title="第一个方法 管理账户查看"></a>第一个方法 管理账户查看</h2><p>通过控制面板–&gt;用户账户–&gt;管理账户查看</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170455397.png" class title="image-20240318170455397">
+
+<p>但是这里被隐藏了 不能看到什么</p>
+<h2 id="第二个方法-管理工具查看"><a href="#第二个方法-管理工具查看" class="headerlink" title="第二个方法 管理工具查看"></a>第二个方法 管理工具查看</h2><p>通过管理工具–&gt;计算机管理–&gt;本地用户和组–&gt;用户<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170615698.png" class title="image-20240318170615698"></p>
+<p>这里很明显了 就是</p>
+<h3 id="hack168"><a href="#hack168" class="headerlink" title="hack168$"></a>hack168$<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170632386.png" class title="image-20240318170632386"></h3><h1 id="4-攻击者挖矿程序的矿池域名"><a href="#4-攻击者挖矿程序的矿池域名" class="headerlink" title="4.攻击者挖矿程序的矿池域名"></a>4.攻击者挖矿程序的矿池域名</h1><p>这里没什么思路</p>
+<blockquote>
+<p>挖矿参考</p>
+<p><a href="https://zhuanlan.zhihu.com/p/108688360">https://zhuanlan.zhihu.com/p/108688360</a></p>
+</blockquote>
+<p>当服务器或PC处于什么样的状态时，我们可以判定为被挖矿。通常来说，当我们的服务器或PC资源(CPU)使用率接近或超过100%，并持续高居不下导致服务器或PC操作延缓，我们就可以判定被挖矿</p>
+<p>在这个桌面文件夹上看到可疑的文件<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318193231545.png" class title="image-20240318193231545"></p>
+<p>我们可以发现在双击运行的时候 直接卡爆</p>
+<p>那就是挖矿程序无疑了</p>
+<p>本来想直接在虚拟机操作的  无奈没有python环境又拖出来</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/extremecoders-re/pyinstxtractor</span><br></pre></td></tr></table></figure>
+
+<p>把Kuang.exe放到根目录下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python ./pyinstxtractor.py Kuang.exe</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194659519.png" class title="image-20240318194659519">
+
+<p>可以发现多了一个文件夹 找到Kuang.pyc</p>
+<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194808998.png" class title="image-20240318194808998">
+
+<p><a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
+<p>使用在线网站进行python反编译<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318195554037.png" class title="image-20240318195554037"></p>
+<p>找到域名</p>
+<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3><img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318202650762.png" class title="image-20240318202650762">
+]]></content>
+  </entry>
+  <entry>
+    <title>应急响应--Windows入侵排查</title>
+    <url>/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/</url>
+    <content><![CDATA[<p>因为打了三个靶场，就总结一下Windows入侵排查</p>
+<p>这里还是以web3的靶机为例子</p>
+<p>先画个思维导图</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324152404459.png" class title="image-20240324152404459">
+
+<h1 id="一、系统排查"><a href="#一、系统排查" class="headerlink" title="一、系统排查"></a>一、系统排查</h1><h2 id="1-系统信息"><a href="#1-系统信息" class="headerlink" title="1.系统信息"></a>1.系统信息</h2><p>本地计算机的硬件资源、组件、软件环境、正在运行的任务、服务、系统驱动程序、加载模块、启动程序等。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msinfo32</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;&#x2F;Microsoft系统信息工具：Msinfo32.exe</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324152826071.png" class title="image-20240324152826071">
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systeminfo</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153044442.png" class title="image-20240324153044442">
+
+
+
+<h2 id="2-用户信息"><a href="#2-用户信息" class="headerlink" title="2.用户信息"></a>2.用户信息</h2><p>攻击者入侵服务器后，可能会通过创建账号对服务器进行远程控制。</p>
+<p>常见的创建账号方法有：创建新账号、激活默认账号、建立隐藏账号（用户名后跟$的为隐藏账号）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net user //列出当前用户</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153254194.png" class title="image-20240324153254194">
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wmic useraccount get name,SID //列出当前系统所有账户</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153343575.png" class title="image-20240324153343575">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lusrmgr.msc //查看账户变化</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153415353.png" class title="image-20240324153415353">
+
+<h2 id="3-启动项"><a href="#3-启动项" class="headerlink" title="3.启动项"></a>3.启动项</h2><p>启动项是系统开机时在前台或者后台运行的程序，攻击者有可能通过启动项使用病毒后门等实现持久化控制</p>
+<p>排查启动项：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">msconfig</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153731916.png" class title="image-20240324153731916">
+
+<p>查看是否存在命名异常的启动项目，是则取消勾选命名异常的启动项目，并到命令中显示的路径删除文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">regedit</span><br></pre></td></tr></table></figure>
+
+<p>特别注意如下三个注册表项:<br>HKEY_CURRENT_USER\software\micorsoft\windows\currentversion\run </p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154017018.png" class title="image-20240324154017018">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run <img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154131781.png" class title="image-20240324154131781">
+<p>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154146097.png" class title="image-20240324154146097">
+
+<h2 id="4-计划任务"><a href="#4-计划任务" class="headerlink" title="4.计划任务"></a>4.计划任务</h2><p>查看计划任务属性，查看是否存在木马文件等。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">taskschd.msc	</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154309603.png" class title="image-20240324154309603">
+
+<p>这道题就是在这里发现flag的</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">schtasks	</span><br></pre></td></tr></table></figure>
+
+<p>也是获取计划任务信息（用户需是administrators组成员）</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154555432.png" class title="image-20240324154555432">
+
+
+
+<h2 id="5-服务自启动"><a href="#5-服务自启动" class="headerlink" title="5.服务自启动"></a>5.服务自启动</h2><p>查看服务类型和启动状态，查看是否存在异常服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">services.msc</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154807112.png" class title="image-20240324154807112">
+
+<h1 id="二、进程、端口排查"><a href="#二、进程、端口排查" class="headerlink" title="二、进程、端口排查"></a>二、进程、端口排查</h1><h2 id="1-进程排查"><a href="#1-进程排查" class="headerlink" title="1.进程排查"></a>1.进程排查</h2><blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">判断进程是否可疑，主要关注以下几点：</span><br><span class="line">1、没有签名验证信息的进程</span><br><span class="line">2、没有描述信息的进程</span><br><span class="line">3、进程的属主</span><br><span class="line">4、进程的路径是否合法</span><br><span class="line">5、CPU或内存资源占用长时间过高的进程</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>主机在感染恶意程序时，都会启动相应进程来完成恶意操作</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">msinfo32</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155000470.png" class title="image-20240324155000470">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist		//可显示所有进程</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155130216.png" class title="image-20240324155130216">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist /svc		//可显示进程和服务的对应关系</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155245622.png" class title="image-20240324155245622">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist /m		//可显示进程加载DLL情况</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155457074.png" class title="image-20240324155457074">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist /m xx.dll		//可查看调用xx.dll模块的进程</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155616183.png" class title="image-20240324155616183">
+
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">运行wmic，命令行输入process		//查看进程对应的程序位置</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155727992.png" class title="image-20240324155727992">
+
+
+
+<h2 id="2-端口排查"><a href="#2-端口排查" class="headerlink" title="2.端口排查"></a>2.端口排查</h2><p>主要对端口的连接情况进行检查，排查是否存在远程连接、可疑连接</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324161653453.png" class title="image-20240324161653453">
+
+<h1 id="三、文件痕迹排查"><a href="#三、文件痕迹排查" class="headerlink" title="三、文件痕迹排查"></a>三、文件痕迹排查</h1><p>主要对恶意软件常用的敏感路径进行排查、针对应急响应事件发生前后的文件进行排查、对带有特征的恶意软件进行排查等</p>
+<h2 id="1、敏感目录文件"><a href="#1、敏感目录文件" class="headerlink" title="1、敏感目录文件"></a>1、敏感目录文件</h2><p>1、各个盘下的temp&#x2F;tmp目录，查看临时文件下是够存在异常文件；</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162226720.png" class title="image-20240324162226720">2、回收站、浏览器下载目录、浏览器历史记录，cookie信息等，查看是否存在可疑信息；
+<p>3、win+r   recent		<br>查看Recent文件。Recent文件存储了最近运行文件的快捷方式；<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162347222.png" class title="image-20240324162347222"><br>4、win+r    %SystemRoot%\Prefetch\			<br>查看预读取文件夹。存放系统已访问过的文件的预读取信息;</p>
+<p>这里是空的<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162543639.png" class title="image-20240324162543639">5、win+r    %SystemRoot%\appcompat\Programs<br>查看Amcache.hve文件，该文件可查询应用程序保存路径、上次执行时间、SHA1值。</p>
+<p>我们打开文件发现会提示进程无法访问</p>
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324163751405.png" class title="image-20240324163751405">
+
+<p>[amcache.hve及包含的文件SHA1值分析]: <a href="https://blog.csdn.net/shadow20080578/article/details/123470455#:~:text=%E7%BD%91%E4%B8%8A%E8%AF%B4%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8system%E6%9D%83%E9%99%90%E9%80%9A%E8%BF%87regedit.exe%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BD%86%E6%88%91%E5%AE%9E%E9%AA%8C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%8F%90%E7%A4%BA%E8%AF%A5%E6%96%87%E4%BB%B6%E6%AD%A3%E5%9C%A8%E8%A2%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82%20%E5%85%B7%E4%BD%93%E6%96%B9%E6%B3%95%E4%B8%BA%EF%BC%9A%201%E3%80%81%E4%BB%A5system%E6%9D%83%E9%99%90%EF%BC%88%E9%9D%9Eadministrator%E6%9D%83%E9%99%90%EF%BC%89%E8%BF%90%E8%A1%8Cregedit.exe%202%E3%80%81%E9%80%89%E6%8B%A9HKEY_LOCAL_MACHINE,3%E3%80%81%E9%80%89%E6%8B%A9File%20-%3E%20Load%20Hive%E2%80%A6%204%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0Amcache.hve%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%88c%3AWindowsAppCompatProgramsAmcache.hve%EF%BC%89%E5%B9%B6%E9%80%89%E6%8B%A9Amcache.hve%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%8A%A5%E9%94%99%EF%BC%9A">https://blog.csdn.net/shadow20080578/article/details/123470455#:~:text=%E7%BD%91%E4%B8%8A%E8%AF%B4%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8system%E6%9D%83%E9%99%90%E9%80%9A%E8%BF%87regedit.exe%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BD%86%E6%88%91%E5%AE%9E%E9%AA%8C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%8F%90%E7%A4%BA%E8%AF%A5%E6%96%87%E4%BB%B6%E6%AD%A3%E5%9C%A8%E8%A2%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82%20%E5%85%B7%E4%BD%93%E6%96%B9%E6%B3%95%E4%B8%BA%EF%BC%9A%201%E3%80%81%E4%BB%A5system%E6%9D%83%E9%99%90%EF%BC%88%E9%9D%9Eadministrator%E6%9D%83%E9%99%90%EF%BC%89%E8%BF%90%E8%A1%8Cregedit.exe%202%E3%80%81%E9%80%89%E6%8B%A9HKEY_LOCAL_MACHINE,3%E3%80%81%E9%80%89%E6%8B%A9File%20-%3E%20Load%20Hive%E2%80%A6%204%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0Amcache.hve%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%88c%3AWindowsAppCompatProgramsAmcache.hve%EF%BC%89%E5%B9%B6%E9%80%89%E6%8B%A9Amcache.hve%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%8A%A5%E9%94%99%EF%BC%9A</a>	“amcache.hve及包含的文件SHA1值分析”</p>
+<p>下载AmcacheParser</p>
+<p>AmcacheParser是GitHub上专门用来解析amcache的工具，可以将amcache.hve仓库的内容解析到csv格式的文件中。</p>
+<p><a href="https://ericzimmerman.github.io/#!index.md">https://ericzimmerman.github.io/#!index.md</a><img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324163916466.png" class title="image-20240324163916466"></p>
+<p>需要用管理员来运行cmd</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">AmcacheParser.exe -f C:\Windows\appcompat\Programs\Amcache.hve --csv c:\temp</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164830839.png" class title="image-20240324164830839">在c:/temp得到解析文件<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164130910.png" class title="image-20240324164130910">
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164210994.png" class title="image-20240324164210994"> 	
+
+
+
+<h2 id="2、基于时间点查找"><a href="#2、基于时间点查找" class="headerlink" title="2、基于时间点查找"></a>2、基于时间点查找</h2><p>1、forfiles命令查找2023&#x2F;3&#x2F;16后创建的exe文件</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">forfiles /m *.exe /d +2023/3/16 /s /p c:\ /c &quot;cmd /c echo @path @fdate @ftime&quot; 2&gt;null</span><br></pre></td></tr></table></figure>
+
+<p>forfiles命令参数：<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164724413.png" class title="image-20240324164724413">2&gt;null：忽略掉错误提示信息</p>
+<p>2、对服务器文件以时间排序，查看可疑文件；<br>3、修改时间在创建时间之前的为可疑文件，重点排查类似有逻辑问题的文件；<br>4、利用计算机自带文件搜索功能，指定修改时间进行搜索；<br>5、使用D盾、webshellkill等工具。</p>
+<h2 id="四、日志分析"><a href="#四、日志分析" class="headerlink" title="四、日志分析"></a>四、日志分析</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">eventvwr.msc //事件查看</span><br></pre></td></tr></table></figure>
+
+<p>打开事件查看器。<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324173431640.png" class title="image-20240324173431640"></p>
+<p>日志文件包括：系统日志、安全性日志及应用程序日志</p>
+<h2 id="1、系统日志"><a href="#1、系统日志" class="headerlink" title="1、系统日志"></a>1、系统日志</h2><p>系统日志主要是指Windows系统中的各个组件在运行中产生的各种事件。这些事件一般可以分为：系统中各种驱动程序在运行中出现的重大问题、操作系统的多种组件在运行中出现的重大问题及应用软件在运行中出现的重大问题等，这些重大问题主要包括重要数据的丢失、错误，以及系统产生的崩溃行为等。</p>
+<h2 id="2、安全性日志"><a href="#2、安全性日志" class="headerlink" title="2、安全性日志"></a>2、安全性日志</h2><p>安全性日志与系统日志不同，安全性日志主要记录了各种与安全相关的事件。构成该日志的内容主要包括：各种登录与退出系统的成功或不成功的信息;对系统中各种重要资源进行的各种操作，如对系统文件进行的创建、删除、更改等操作。</p>
+<h2 id="3、应用程序日志"><a href="#3、应用程序日志" class="headerlink" title="3、应用程序日志"></a>3、应用程序日志</h2><p>应用程序日志主要记录各种应用程序所产生的各类事件。例如，系统中SQL Server数据库程序在受到暴力破解攻击时，日志中会有相关记录，该记录中包含与对应事件相关的详细信息。</p>
+<p><strong>在Windows Vista&#x2F;Windows7&#x2F;Windows8&#x2F;Windows10&#x2F;Windows Server2008及以上版本系统中:</strong><br>系统日志的位置为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\System.evtx</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171236670.png" class>
+
+<p>安全性日志的位置为:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\Security.evtx</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171356694.png" class title="image-20240325171356694">应用程序日志的位置为:
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\Application.evtx</span><br></pre></td></tr></table></figure>
+
+<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171628237.png" class title="image-20240325171628237">
+
+<blockquote>
+<p><strong>在Windows 2000专业版&#x2F;Windows XP&#x2F;Windows Server 2003系统中:</strong><br>系统日志的位置为:<br>C:\WINDOWS\System32\config\SysEvent.evt<br>安全性日志的位置为:<br>C:\WINDOWS\System32\config\SecEvent.evt<br>应用程序日志的位置为:<br>C:\WINNT\System32\config\AppEvent.evt</p>
+</blockquote>
+<h1 id="五、内存分析"><a href="#五、内存分析" class="headerlink" title="五、内存分析"></a>五、内存分析</h1><p>对服务器进行内存的提取，分析其中的隐藏进程。</p>
+<blockquote>
+<p>内存的获取方法：<br>基于用户模式程序的内存获取;<br>基于内核模式程序的内存获取;<br>基于系统崩溃转储的内存获取;<br>基于操作系统注入的内存获取;<br>基于系统休眠文件的内存获取;<br>基于虚拟化快照的内存获取;<br>基于系统冷启动的内存获取;<br>基于硬件的内存获取。</p>
+</blockquote>
+<h1 id="六、流量分析"><a href="#六、流量分析" class="headerlink" title="六、流量分析"></a>六、流量分析</h1><p><strong>查看相关的地址连接情况：</strong> PCHunter（Windows系统信息查看软件）、Process Monitor（进程监视器）等工具或netstat等命令。<br> <strong>查看内部流量：</strong>Wireshark等网络封包分析软件。</p>
+]]></content>
+  </entry>
+  <entry>
     <title>尝试出一道密码题</title>
     <url>/2024/03/13/%E5%B0%9D%E8%AF%95%E5%87%BA%E4%B8%80%E4%B8%AA%E5%AF%86%E7%A0%81%E9%A2%98/</url>
     <content><![CDATA[<h1 id="尝试出一道密码题"><a href="#尝试出一道密码题" class="headerlink" title="尝试出一道密码题"></a>尝试出一道密码题</h1><h3 id="1-将py文件打包成可执行文件"><a href="#1-将py文件打包成可执行文件" class="headerlink" title="1.将py文件打包成可执行文件"></a>1.将py文件打包成可执行文件</h3><p>参考 ：</p>
@@ -70,106 +291,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>应急响应靶场1</title>
-    <url>/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/</url>
-    <content><![CDATA[<blockquote>
-<p>前景需要：</p>
-<p>小李在值守的过程中，发现有CPU占用飙升，出于胆子小，就立刻将服务器关机，并找来正在吃苕皮的hxd帮他分析，这是他的服务器系统，请你找出以下内容，并作为通关条件：</p>
-<p>1.攻击者的shell密码</p>
-<p>2.攻击者的IP地址</p>
-<p>3.攻击者的隐藏账户名称</p>
-<p>4.攻击者挖矿程序的矿池域名(仅域名)</p>
-<p>5.有实力的可以尝试着修复漏洞</p>
-</blockquote>
-<p>打开镜像</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163806458.png" class title="image-20240318163806458">
-
-<h1 id="1-攻击者的shell密码"><a href="#1-攻击者的shell密码" class="headerlink" title="1.攻击者的shell密码"></a>1.攻击者的shell密码</h1><p>进去就看到小皮了 猜测有个网站</p>
-<p>打开小皮，打开网站根目录<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163558725.png" class title="image-20240318163558725"></p>
-<p>网站根目录：<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163911665.png" class title="image-20240318163911665"></p>
-<p>把d盾拉进虚拟机</p>
-<p>扫一下看看</p>
-<p>可以看到后门<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318163951929.png" class title="image-20240318163951929"></p>
-<p>打开看看</p>
-<p>可以看到密码了</p>
-<h3 id="rebeyond"><a href="#rebeyond" class="headerlink" title="rebeyond"></a>rebeyond<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318164048987.png" class title="image-20240318164048987"></h3><h1 id="2-攻击者的IP地址"><a href="#2-攻击者的IP地址" class="headerlink" title="2.攻击者的IP地址"></a>2.攻击者的IP地址</h1><p>上网搜了搜 查找攻击者的ip要到日志去找</p>
-<p>查看logs</p>
-<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs\access.log</p>
-<p>直接搜索shell，可以找到ip</p>
-<h3 id="192-168-126-1"><a href="#192-168-126-1" class="headerlink" title="192.168.126.1"></a>192.168.126.1<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318165912130.png" class title="image-20240318165912130"></h3><h1 id="3-攻击者的隐藏账户名称"><a href="#3-攻击者的隐藏账户名称" class="headerlink" title="3.攻击者的隐藏账户名称"></a>3.攻击者的隐藏账户名称</h1><blockquote>
-<p>这里参考</p>
-<p><a href="https://blog.csdn.net/qq_51577576/article/details/129973356">https://blog.csdn.net/qq_51577576/article/details/129973356</a></p>
-</blockquote>
-<h2 id="第一个方法-管理账户查看"><a href="#第一个方法-管理账户查看" class="headerlink" title="第一个方法 管理账户查看"></a>第一个方法 管理账户查看</h2><p>通过控制面板–&gt;用户账户–&gt;管理账户查看</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170455397.png" class title="image-20240318170455397">
-
-<p>但是这里被隐藏了 不能看到什么</p>
-<h2 id="第二个方法-管理工具查看"><a href="#第二个方法-管理工具查看" class="headerlink" title="第二个方法 管理工具查看"></a>第二个方法 管理工具查看</h2><p>通过管理工具–&gt;计算机管理–&gt;本地用户和组–&gt;用户<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170615698.png" class title="image-20240318170615698"></p>
-<p>这里很明显了 就是</p>
-<h3 id="hack168"><a href="#hack168" class="headerlink" title="hack168$"></a>hack168$<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318170632386.png" class title="image-20240318170632386"></h3><h1 id="4-攻击者挖矿程序的矿池域名"><a href="#4-攻击者挖矿程序的矿池域名" class="headerlink" title="4.攻击者挖矿程序的矿池域名"></a>4.攻击者挖矿程序的矿池域名</h1><p>这里没什么思路</p>
-<blockquote>
-<p>挖矿参考</p>
-<p><a href="https://zhuanlan.zhihu.com/p/108688360">https://zhuanlan.zhihu.com/p/108688360</a></p>
-</blockquote>
-<p>当服务器或PC处于什么样的状态时，我们可以判定为被挖矿。通常来说，当我们的服务器或PC资源(CPU)使用率接近或超过100%，并持续高居不下导致服务器或PC操作延缓，我们就可以判定被挖矿</p>
-<p>在这个桌面文件夹上看到可疑的文件<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318193231545.png" class title="image-20240318193231545"></p>
-<p>我们可以发现在双击运行的时候 直接卡爆</p>
-<p>那就是挖矿程序无疑了</p>
-<p>本来想直接在虚拟机操作的  无奈没有python环境又拖出来</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://github.com/extremecoders-re/pyinstxtractor</span><br></pre></td></tr></table></figure>
-
-<p>把Kuang.exe放到根目录下</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">python ./pyinstxtractor.py Kuang.exe</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194659519.png" class title="image-20240318194659519">
-
-<p>可以发现多了一个文件夹 找到Kuang.pyc</p>
-<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318194808998.png" class title="image-20240318194808998">
-
-<p><a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
-<p>使用在线网站进行python反编译<img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318195554037.png" class title="image-20240318195554037"></p>
-<p>找到域名</p>
-<h3 id="http-wakuang-zhigongshanfang-top"><a href="#http-wakuang-zhigongshanfang-top" class="headerlink" title="http://wakuang.zhigongshanfang.top"></a><a href="http://wakuang.zhigongshanfang.top/">http://wakuang.zhigongshanfang.top</a></h3><img src="/2024/03/18/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA1/image-20240318202650762.png" class title="image-20240318202650762">
-]]></content>
-  </entry>
-  <entry>
-    <title>应急响应靶场2</title>
-    <url>/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/</url>
-    <content><![CDATA[<blockquote>
-<p>前景需要:小李在某单位驻场值守，深夜12点，甲方已经回家了，小李刚偷偷摸鱼后发现安全设备有告警，于是立刻停掉了机器开始排查。<br>这是他的服务器系统°，请你找出以下内容，并作为通关条件:<br>1.攻击者的IP地址(两个)?<br>2.攻击者的webshel文件名?<br>3.攻击者的webshell密码?<br>4.攻击者的伪QQ号?<br>5.攻击者的伪服务器IP地址?<br>6.攻击者的服务器端口?<br>7.攻击者是如何入侵的(选择题)?<br>8.攻击者的隐藏用户名?<br>用户:administrator<br>密码:<a href="mailto:&#x5a;&#103;&#x73;&#x66;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;">&#x5a;&#103;&#x73;&#x66;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#109;</a></p>
-</blockquote>
-<h1 id="攻击者的webshel文件名"><a href="#攻击者的webshel文件名" class="headerlink" title="攻击者的webshel文件名?"></a>攻击者的webshel文件名?</h1><p>进入虚拟机，进入小皮 跟靶机1一样，有个网站<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212603627.png" class title="image-20240319212603627"></p>
-<p>进入网站根目录 还是用d盾扫一下 可以看到后门</p>
-<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212724915.png" class title="image-20240319212724915">
-
-<h3 id="system-php"><a href="#system-php" class="headerlink" title="system.php"></a>system.php</h3><h1 id="攻击者的webshell密码"><a href="#攻击者的webshell密码" class="headerlink" title="攻击者的webshell密码?"></a>攻击者的webshell密码?</h1><p>直接打开system.php查看</p>
-<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213721611.png" class title="image-20240319213721611">
-
-<h3 id="hack6618"><a href="#hack6618" class="headerlink" title="hack6618"></a>hack6618</h3><h1 id="攻击者的IP地址-两个"><a href="#攻击者的IP地址-两个" class="headerlink" title="攻击者的IP地址(两个)?"></a>攻击者的IP地址(两个)?</h1><p>查看日志</p>
-<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs目录下有个日志</p>
-<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213919787.png" class title="image-20240319213919787">
-
-<p>时间查看器</p>
-<p>win+r  Eventvwr<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319220248259.png" class title="image-20240319220248259"></p>
-<h3 id="192-168-126-135"><a href="#192-168-126-135" class="headerlink" title="192.168.126.135"></a>192.168.126.135</h3><h3 id="192-168-126-129"><a href="#192-168-126-129" class="headerlink" title="192.168.126.129"></a>192.168.126.129</h3><h1 id="攻击者是如何入侵的-选择题"><a href="#攻击者是如何入侵的-选择题" class="headerlink" title="攻击者是如何入侵的(选择题)?"></a>攻击者是如何入侵的(选择题)?</h1><p>在C:\phpstudy_pro\Extensions\FTP0.9.60\Logs目录下看到日志</p>
-<p>当时看到ftp文件夹其实就怀疑是ftp了</p>
-<p>​	<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204305524.png" class title="image-20240320204305524"></p>
-<p>可以看到上传了system.php<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204348353.png" class title="image-20240320204348353"></p>
-<h3 id="tcp"><a href="#tcp" class="headerlink" title="tcp"></a>tcp</h3><h1 id="攻击者的隐藏用户名"><a href="#攻击者的隐藏用户名" class="headerlink" title="攻击者的隐藏用户名?"></a>攻击者的隐藏用户名?</h1><p>win+r lusrmgr.msc</p>
-<p>用户名里面<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320205728185.png" class title="image-20240320205728185"></p>
-<h3 id="hack887"><a href="#hack887" class="headerlink" title="hack887"></a>hack887</h3><h1 id="攻击者的伪QQ号"><a href="#攻击者的伪QQ号" class="headerlink" title="攻击者的伪QQ号?"></a>攻击者的伪QQ号?</h1><p>在文档内找到Tencent Files</p>
-<p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321</p>
-<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320214927142.png" class title="image-20240320214927142">
-
-<h3 id="777888999321"><a href="#777888999321" class="headerlink" title="777888999321"></a>777888999321</h3><h1 id="攻击者的伪服务器IP地址"><a href="#攻击者的伪服务器IP地址" class="headerlink" title="攻击者的伪服务器IP地址?"></a>攻击者的伪服务器IP地址?</h1><p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321\FileRecv\frp_0.54.0_windows_amd64\frp_0.54.0_windows_amd64</p>
-<p>看到配置文件ini</p>
-<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215033067.png" class title="image-20240320215033067">
-
-<h3 id="256-256-66-88"><a href="#256-256-66-88" class="headerlink" title="256.256.66.88"></a>256.256.66.88</h3><h1 id="攻击者的服务器端口"><a href="#攻击者的服务器端口" class="headerlink" title="攻击者的服务器端口?"></a>攻击者的服务器端口?</h1><p>见上</p>
-<h3 id="65535"><a href="#65535" class="headerlink" title="65535"></a>65535</h3><img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215403365.png" class title="image-20240320215403365">
-]]></content>
-  </entry>
-  <entry>
     <title>应急响应靶场3</title>
     <url>/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/</url>
     <content><![CDATA[<blockquote>
@@ -211,7 +332,7 @@
 <h3 id="flag-888666abc"><a href="#flag-888666abc" class="headerlink" title="flag{888666abc}"></a>flag{888666abc}</h3><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324112123065.png" class title="image-20240324112123065">
 
 <p>下面要更换hack6618$的密码</p>
-<p>net user hack6618$ <a href="mailto:&#x61;&#x61;&#97;&#49;&#x31;&#x31;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;">&#x61;&#x61;&#97;&#49;&#x31;&#x31;&#64;&#x71;&#113;&#x2e;&#99;&#111;&#109;</a><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114110599.png" class title="image-20240324114110599"></p>
+<p>net user hack6618$ <a href="mailto:&#97;&#x61;&#97;&#49;&#x31;&#49;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x61;&#97;&#49;&#x31;&#49;&#64;&#x71;&#x71;&#x2e;&#x63;&#x6f;&#109;</a><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114110599.png" class title="image-20240324114110599"></p>
 <p>打开任务计划程序<img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324114150651.png" class title="image-20240324114150651"><img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324113932782.png" class title="image-20240324113932782"></p>
 <h3 id="flag-zgsfsys-sec"><a href="#flag-zgsfsys-sec" class="headerlink" title="flag{zgsfsys@sec}"></a>flag{zgsfsys@sec}</h3><p>打开网站</p>
 <img src="/2024/03/21/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA3/image-20240324115000415.png" class title="image-20240324115000415">
@@ -265,6 +386,43 @@
 
 
 <p>但是我在写这篇文章的没有去调整html文件。应该是当时文件路径重了。但是看到别人也有去修改html的。。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>应急响应靶场2</title>
+    <url>/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/</url>
+    <content><![CDATA[<blockquote>
+<p>前景需要:小李在某单位驻场值守，深夜12点，甲方已经回家了，小李刚偷偷摸鱼后发现安全设备有告警，于是立刻停掉了机器开始排查。<br>这是他的服务器系统°，请你找出以下内容，并作为通关条件:<br>1.攻击者的IP地址(两个)?<br>2.攻击者的webshel文件名?<br>3.攻击者的webshell密码?<br>4.攻击者的伪QQ号?<br>5.攻击者的伪服务器IP地址?<br>6.攻击者的服务器端口?<br>7.攻击者是如何入侵的(选择题)?<br>8.攻击者的隐藏用户名?<br>用户:administrator<br>密码:<a href="mailto:&#90;&#x67;&#115;&#x66;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#90;&#x67;&#115;&#x66;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a></p>
+</blockquote>
+<h1 id="攻击者的webshel文件名"><a href="#攻击者的webshel文件名" class="headerlink" title="攻击者的webshel文件名?"></a>攻击者的webshel文件名?</h1><p>进入虚拟机，进入小皮 跟靶机1一样，有个网站<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212603627.png" class title="image-20240319212603627"></p>
+<p>进入网站根目录 还是用d盾扫一下 可以看到后门</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319212724915.png" class title="image-20240319212724915">
+
+<h3 id="system-php"><a href="#system-php" class="headerlink" title="system.php"></a>system.php</h3><h1 id="攻击者的webshell密码"><a href="#攻击者的webshell密码" class="headerlink" title="攻击者的webshell密码?"></a>攻击者的webshell密码?</h1><p>直接打开system.php查看</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213721611.png" class title="image-20240319213721611">
+
+<h3 id="hack6618"><a href="#hack6618" class="headerlink" title="hack6618"></a>hack6618</h3><h1 id="攻击者的IP地址-两个"><a href="#攻击者的IP地址-两个" class="headerlink" title="攻击者的IP地址(两个)?"></a>攻击者的IP地址(两个)?</h1><p>查看日志</p>
+<p>C:\phpstudy_pro\Extensions\Apache2.4.39\logs目录下有个日志</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319213919787.png" class title="image-20240319213919787">
+
+<p>时间查看器</p>
+<p>win+r  Eventvwr<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240319220248259.png" class title="image-20240319220248259"></p>
+<h3 id="192-168-126-135"><a href="#192-168-126-135" class="headerlink" title="192.168.126.135"></a>192.168.126.135</h3><h3 id="192-168-126-129"><a href="#192-168-126-129" class="headerlink" title="192.168.126.129"></a>192.168.126.129</h3><h1 id="攻击者是如何入侵的-选择题"><a href="#攻击者是如何入侵的-选择题" class="headerlink" title="攻击者是如何入侵的(选择题)?"></a>攻击者是如何入侵的(选择题)?</h1><p>在C:\phpstudy_pro\Extensions\FTP0.9.60\Logs目录下看到日志</p>
+<p>当时看到ftp文件夹其实就怀疑是ftp了</p>
+<p>​	<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204305524.png" class title="image-20240320204305524"></p>
+<p>可以看到上传了system.php<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320204348353.png" class title="image-20240320204348353"></p>
+<h3 id="tcp"><a href="#tcp" class="headerlink" title="tcp"></a>tcp</h3><h1 id="攻击者的隐藏用户名"><a href="#攻击者的隐藏用户名" class="headerlink" title="攻击者的隐藏用户名?"></a>攻击者的隐藏用户名?</h1><p>win+r lusrmgr.msc</p>
+<p>用户名里面<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320205728185.png" class title="image-20240320205728185"></p>
+<h3 id="hack887"><a href="#hack887" class="headerlink" title="hack887"></a>hack887</h3><h1 id="攻击者的伪QQ号"><a href="#攻击者的伪QQ号" class="headerlink" title="攻击者的伪QQ号?"></a>攻击者的伪QQ号?</h1><p>在文档内找到Tencent Files</p>
+<p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320214927142.png" class title="image-20240320214927142">
+
+<h3 id="777888999321"><a href="#777888999321" class="headerlink" title="777888999321"></a>777888999321</h3><h1 id="攻击者的伪服务器IP地址"><a href="#攻击者的伪服务器IP地址" class="headerlink" title="攻击者的伪服务器IP地址?"></a>攻击者的伪服务器IP地址?</h1><p>目录C:\Users\Administrator\Documents\Tencent Files\777888999321\FileRecv\frp_0.54.0_windows_amd64\frp_0.54.0_windows_amd64</p>
+<p>看到配置文件ini</p>
+<img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215033067.png" class title="image-20240320215033067">
+
+<h3 id="256-256-66-88"><a href="#256-256-66-88" class="headerlink" title="256.256.66.88"></a>256.256.66.88</h3><h1 id="攻击者的服务器端口"><a href="#攻击者的服务器端口" class="headerlink" title="攻击者的服务器端口?"></a>攻击者的服务器端口?</h1><p>见上</p>
+<h3 id="65535"><a href="#65535" class="headerlink" title="65535"></a>65535</h3><img src="/2024/03/19/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94%E9%9D%B6%E5%9C%BA2/image-20240320215403365.png" class title="image-20240320215403365">
 ]]></content>
   </entry>
 </search>
