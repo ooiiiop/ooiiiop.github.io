@@ -177,7 +177,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-25 17:25:49" itemprop="dateModified" datetime="2024-03-25T17:25:49+08:00">2024-03-25</time>
+                <time title="修改时间：2024-03-25 17:28:50" itemprop="dateModified" datetime="2024-03-25T17:28:50+08:00">2024-03-25</time>
               </span>
 
           
@@ -191,160 +191,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>因为打了三个靶场，就总结一下Windows入侵排查</p>
-<p>这里还是以web3的靶机为例子</p>
-<p>先画个思维导图</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324152404459.png" class title="image-20240324152404459">
-
-<h1 id="一、系统排查"><a href="#一、系统排查" class="headerlink" title="一、系统排查"></a>一、系统排查</h1><h2 id="1-系统信息"><a href="#1-系统信息" class="headerlink" title="1.系统信息"></a>1.系统信息</h2><p>本地计算机的硬件资源、组件、软件环境、正在运行的任务、服务、系统驱动程序、加载模块、启动程序等。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msinfo32</span><br></pre></td></tr></table></figure>
-
-<p>&#x2F;&#x2F;Microsoft系统信息工具：Msinfo32.exe</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324152826071.png" class title="image-20240324152826071">
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systeminfo</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153044442.png" class title="image-20240324153044442">
-
-
-
-<h2 id="2-用户信息"><a href="#2-用户信息" class="headerlink" title="2.用户信息"></a>2.用户信息</h2><p>攻击者入侵服务器后，可能会通过创建账号对服务器进行远程控制。</p>
-<p>常见的创建账号方法有：创建新账号、激活默认账号、建立隐藏账号（用户名后跟$的为隐藏账号）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net user //列出当前用户</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153254194.png" class title="image-20240324153254194">
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wmic useraccount get name,SID //列出当前系统所有账户</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153343575.png" class title="image-20240324153343575">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lusrmgr.msc //查看账户变化</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153415353.png" class title="image-20240324153415353">
-
-<h2 id="3-启动项"><a href="#3-启动项" class="headerlink" title="3.启动项"></a>3.启动项</h2><p>启动项是系统开机时在前台或者后台运行的程序，攻击者有可能通过启动项使用病毒后门等实现持久化控制</p>
-<p>排查启动项：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msconfig</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324153731916.png" class title="image-20240324153731916">
-
-<p>查看是否存在命名异常的启动项目，是则取消勾选命名异常的启动项目，并到命令中显示的路径删除文件。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">regedit</span><br></pre></td></tr></table></figure>
-
-<p>特别注意如下三个注册表项:<br>HKEY_CURRENT_USER\software\micorsoft\windows\currentversion\run </p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154017018.png" class title="image-20240324154017018">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run <img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154131781.png" class title="image-20240324154131781">
-<p>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154146097.png" class title="image-20240324154146097">
-
-<h2 id="4-计划任务"><a href="#4-计划任务" class="headerlink" title="4.计划任务"></a>4.计划任务</h2><p>查看计划任务属性，查看是否存在木马文件等。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">taskschd.msc	</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154309603.png" class title="image-20240324154309603">
-
-<p>这道题就是在这里发现flag的</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">schtasks	</span><br></pre></td></tr></table></figure>
-
-<p>也是获取计划任务信息（用户需是administrators组成员）</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154555432.png" class title="image-20240324154555432">
-
-
-
-<h2 id="5-服务自启动"><a href="#5-服务自启动" class="headerlink" title="5.服务自启动"></a>5.服务自启动</h2><p>查看服务类型和启动状态，查看是否存在异常服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">services.msc</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324154807112.png" class title="image-20240324154807112">
-
-<h1 id="二、进程、端口排查"><a href="#二、进程、端口排查" class="headerlink" title="二、进程、端口排查"></a>二、进程、端口排查</h1><h2 id="1-进程排查"><a href="#1-进程排查" class="headerlink" title="1.进程排查"></a>1.进程排查</h2><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">判断进程是否可疑，主要关注以下几点：</span><br><span class="line">1、没有签名验证信息的进程</span><br><span class="line">2、没有描述信息的进程</span><br><span class="line">3、进程的属主</span><br><span class="line">4、进程的路径是否合法</span><br><span class="line">5、CPU或内存资源占用长时间过高的进程</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>主机在感染恶意程序时，都会启动相应进程来完成恶意操作</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msinfo32</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155000470.png" class title="image-20240324155000470">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist		//可显示所有进程</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155130216.png" class title="image-20240324155130216">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist /svc		//可显示进程和服务的对应关系</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155245622.png" class title="image-20240324155245622">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist /m		//可显示进程加载DLL情况</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155457074.png" class title="image-20240324155457074">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist /m xx.dll		//可查看调用xx.dll模块的进程</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155616183.png" class title="image-20240324155616183">
-
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">运行wmic，命令行输入process		//查看进程对应的程序位置</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324155727992.png" class title="image-20240324155727992">
-
-
-
-<h2 id="2-端口排查"><a href="#2-端口排查" class="headerlink" title="2.端口排查"></a>2.端口排查</h2><p>主要对端口的连接情况进行检查，排查是否存在远程连接、可疑连接</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324161653453.png" class title="image-20240324161653453">
-
-<h1 id="三、文件痕迹排查"><a href="#三、文件痕迹排查" class="headerlink" title="三、文件痕迹排查"></a>三、文件痕迹排查</h1><p>主要对恶意软件常用的敏感路径进行排查、针对应急响应事件发生前后的文件进行排查、对带有特征的恶意软件进行排查等</p>
-<h2 id="1、敏感目录文件"><a href="#1、敏感目录文件" class="headerlink" title="1、敏感目录文件"></a>1、敏感目录文件</h2><p>1、各个盘下的temp&#x2F;tmp目录，查看临时文件下是够存在异常文件；</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162226720.png" class title="image-20240324162226720">2、回收站、浏览器下载目录、浏览器历史记录，cookie信息等，查看是否存在可疑信息；
-<p>3、win+r   recent		<br>查看Recent文件。Recent文件存储了最近运行文件的快捷方式；<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162347222.png" class title="image-20240324162347222"><br>4、win+r    %SystemRoot%\Prefetch\			<br>查看预读取文件夹。存放系统已访问过的文件的预读取信息;</p>
-<p>这里是空的<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324162543639.png" class title="image-20240324162543639">5、win+r    %SystemRoot%\appcompat\Programs<br>查看Amcache.hve文件，该文件可查询应用程序保存路径、上次执行时间、SHA1值。</p>
-<p>我们打开文件发现会提示进程无法访问</p>
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324163751405.png" class title="image-20240324163751405">
-
-<p>[amcache.hve及包含的文件SHA1值分析]: <a target="_blank" rel="noopener" href="https://blog.csdn.net/shadow20080578/article/details/123470455#:~:text=%E7%BD%91%E4%B8%8A%E8%AF%B4%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8system%E6%9D%83%E9%99%90%E9%80%9A%E8%BF%87regedit.exe%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BD%86%E6%88%91%E5%AE%9E%E9%AA%8C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%8F%90%E7%A4%BA%E8%AF%A5%E6%96%87%E4%BB%B6%E6%AD%A3%E5%9C%A8%E8%A2%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82%20%E5%85%B7%E4%BD%93%E6%96%B9%E6%B3%95%E4%B8%BA%EF%BC%9A%201%E3%80%81%E4%BB%A5system%E6%9D%83%E9%99%90%EF%BC%88%E9%9D%9Eadministrator%E6%9D%83%E9%99%90%EF%BC%89%E8%BF%90%E8%A1%8Cregedit.exe%202%E3%80%81%E9%80%89%E6%8B%A9HKEY_LOCAL_MACHINE,3%E3%80%81%E9%80%89%E6%8B%A9File%20-%3E%20Load%20Hive%E2%80%A6%204%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0Amcache.hve%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%88c%3AWindowsAppCompatProgramsAmcache.hve%EF%BC%89%E5%B9%B6%E9%80%89%E6%8B%A9Amcache.hve%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%8A%A5%E9%94%99%EF%BC%9A">https://blog.csdn.net/shadow20080578/article/details/123470455#:~:text=%E7%BD%91%E4%B8%8A%E8%AF%B4%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8system%E6%9D%83%E9%99%90%E9%80%9A%E8%BF%87regedit.exe%E6%9D%A5%E6%9F%A5%E7%9C%8B%E4%BB%93%E5%BA%93%E5%86%85%E5%AE%B9%EF%BC%8C%E4%BD%86%E6%88%91%E5%AE%9E%E9%AA%8C%E5%A4%B1%E8%B4%A5%EF%BC%8C%E6%8F%90%E7%A4%BA%E8%AF%A5%E6%96%87%E4%BB%B6%E6%AD%A3%E5%9C%A8%E8%A2%AB%E5%8F%A6%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E4%BD%BF%E7%94%A8%EF%BC%8C%E6%97%A0%E6%B3%95%E6%89%93%E5%BC%80%E3%80%82%20%E5%85%B7%E4%BD%93%E6%96%B9%E6%B3%95%E4%B8%BA%EF%BC%9A%201%E3%80%81%E4%BB%A5system%E6%9D%83%E9%99%90%EF%BC%88%E9%9D%9Eadministrator%E6%9D%83%E9%99%90%EF%BC%89%E8%BF%90%E8%A1%8Cregedit.exe%202%E3%80%81%E9%80%89%E6%8B%A9HKEY_LOCAL_MACHINE,3%E3%80%81%E9%80%89%E6%8B%A9File%20-%3E%20Load%20Hive%E2%80%A6%204%E3%80%81%E5%88%87%E6%8D%A2%E5%88%B0Amcache.hve%E6%89%80%E5%9C%A8%E7%9B%AE%E5%BD%95%EF%BC%88c%3AWindowsAppCompatProgramsAmcache.hve%EF%BC%89%E5%B9%B6%E9%80%89%E6%8B%A9Amcache.hve%EF%BC%8C%E7%BB%93%E6%9E%9C%E6%8A%A5%E9%94%99%EF%BC%9A</a>	“amcache.hve及包含的文件SHA1值分析”</p>
-<p>下载AmcacheParser</p>
-<p>AmcacheParser是GitHub上专门用来解析amcache的工具，可以将amcache.hve仓库的内容解析到csv格式的文件中。</p>
-<p><a target="_blank" rel="noopener" href="https://ericzimmerman.github.io/#!index.md">https://ericzimmerman.github.io/#!index.md</a><img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324163916466.png" class title="image-20240324163916466"></p>
-<p>需要用管理员来运行cmd</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">AmcacheParser.exe -f C:\Windows\appcompat\Programs\Amcache.hve --csv c:\temp</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164830839.png" class title="image-20240324164830839">在c:/temp得到解析文件<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164130910.png" class title="image-20240324164130910">
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164210994.png" class title="image-20240324164210994"> 	
-
-
-
-<h2 id="2、基于时间点查找"><a href="#2、基于时间点查找" class="headerlink" title="2、基于时间点查找"></a>2、基于时间点查找</h2><p>1、forfiles命令查找2023&#x2F;3&#x2F;16后创建的exe文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">forfiles /m *.exe /d +2023/3/16 /s /p c:\ /c &quot;cmd /c echo @path @fdate @ftime&quot; 2&gt;null</span><br></pre></td></tr></table></figure>
-
-<p>forfiles命令参数：<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324164724413.png" class title="image-20240324164724413">2&gt;null：忽略掉错误提示信息</p>
-<p>2、对服务器文件以时间排序，查看可疑文件；<br>3、修改时间在创建时间之前的为可疑文件，重点排查类似有逻辑问题的文件；<br>4、利用计算机自带文件搜索功能，指定修改时间进行搜索；<br>5、使用D盾、webshellkill等工具。</p>
-<h2 id="四、日志分析"><a href="#四、日志分析" class="headerlink" title="四、日志分析"></a>四、日志分析</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eventvwr.msc //事件查看</span><br></pre></td></tr></table></figure>
-
-<p>打开事件查看器。<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240324173431640.png" class title="image-20240324173431640"></p>
-<p>日志文件包括：系统日志、安全性日志及应用程序日志</p>
-<h2 id="1、系统日志"><a href="#1、系统日志" class="headerlink" title="1、系统日志"></a>1、系统日志</h2><p>系统日志主要是指Windows系统中的各个组件在运行中产生的各种事件。这些事件一般可以分为：系统中各种驱动程序在运行中出现的重大问题、操作系统的多种组件在运行中出现的重大问题及应用软件在运行中出现的重大问题等，这些重大问题主要包括重要数据的丢失、错误，以及系统产生的崩溃行为等。</p>
-<h2 id="2、安全性日志"><a href="#2、安全性日志" class="headerlink" title="2、安全性日志"></a>2、安全性日志</h2><p>安全性日志与系统日志不同，安全性日志主要记录了各种与安全相关的事件。构成该日志的内容主要包括：各种登录与退出系统的成功或不成功的信息;对系统中各种重要资源进行的各种操作，如对系统文件进行的创建、删除、更改等操作。</p>
-<h2 id="3、应用程序日志"><a href="#3、应用程序日志" class="headerlink" title="3、应用程序日志"></a>3、应用程序日志</h2><p>应用程序日志主要记录各种应用程序所产生的各类事件。例如，系统中SQL Server数据库程序在受到暴力破解攻击时，日志中会有相关记录，该记录中包含与对应事件相关的详细信息。</p>
-<p><strong>在Windows Vista&#x2F;Windows7&#x2F;Windows8&#x2F;Windows10&#x2F;Windows Server2008及以上版本系统中:</strong><br>系统日志的位置为:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\System.evtx</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171236670.png" class>
-
-<p>安全性日志的位置为:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\Security.evtx</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171356694.png" class title="image-20240325171356694">应用程序日志的位置为:
-
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%SystemRoot%\System32\Winevt\Logs\Application.evtx</span><br></pre></td></tr></table></figure>
-
-<img src="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/image-20240325171628237.png" class title="image-20240325171628237">
-
-<blockquote>
-<p><strong>在Windows 2000专业版&#x2F;Windows XP&#x2F;Windows Server 2003系统中:</strong><br>系统日志的位置为:<br>C:\WINDOWS\System32\config\SysEvent.evt<br>安全性日志的位置为:<br>C:\WINDOWS\System32\config\SecEvent.evt<br>应用程序日志的位置为:<br>C:\WINNT\System32\config\AppEvent.evt</p>
-</blockquote>
-<h1 id="五、内存分析"><a href="#五、内存分析" class="headerlink" title="五、内存分析"></a>五、内存分析</h1><p>对服务器进行内存的提取，分析其中的隐藏进程。</p>
-<blockquote>
-<p>内存的获取方法：<br>基于用户模式程序的内存获取;<br>基于内核模式程序的内存获取;<br>基于系统崩溃转储的内存获取;<br>基于操作系统注入的内存获取;<br>基于系统休眠文件的内存获取;<br>基于虚拟化快照的内存获取;<br>基于系统冷启动的内存获取;<br>基于硬件的内存获取。</p>
-</blockquote>
-<h1 id="六、流量分析"><a href="#六、流量分析" class="headerlink" title="六、流量分析"></a>六、流量分析</h1><p><strong>查看相关的地址连接情况：</strong> PCHunter（Windows系统信息查看软件）、Process Monitor（进程监视器）等工具或netstat等命令。<br> <strong>查看内部流量：</strong>Wireshark等网络封包分析软件。</p>
-
+          <p>系统排查 |进程、端口排查 | 文件痕迹排查 | 日志分析 |内存分析 | 流量分析</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/03/24/%E5%BA%94%E6%80%A5%E5%93%8D%E5%BA%94-Windows%E5%85%A5%E4%BE%B5%E6%8E%92%E6%9F%A5/">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
